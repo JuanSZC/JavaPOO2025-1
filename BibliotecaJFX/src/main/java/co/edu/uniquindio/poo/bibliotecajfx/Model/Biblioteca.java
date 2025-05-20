@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.bibliotecajfx.Model;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,10 @@ public class Biblioteca {
         this.listLibros =  new ArrayList<>();
         this.listVisitantes = new ArrayList<>();
         this.listReservas = new ArrayList<>();
+    }
+
+    public void mostrarError(String error) {
+        JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public String getNombre() {

@@ -1,5 +1,6 @@
 package co.edu.uniquindio.poo.bibliotecajfx.Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
         this.listReservasUsuario = new ArrayList<>();
     }
+
+public void solicitarPrestamoLibro(Libro libro, int dias){
+        LocalDate fecha = LocalDate.now();
+        Reserva reserva = new Reserva(libro,this,dias,fecha);
+}
+
 
     public String getNombreCompleto() {
         return nombreCompleto;
