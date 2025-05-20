@@ -6,4 +6,7 @@ module co.edu.uniquindio.poo.bibliotecajfx {
 
     opens co.edu.uniquindio.poo.bibliotecajfx to javafx.fxml;
     exports co.edu.uniquindio.poo.bibliotecajfx;
+
+    exports co.edu.uniquindio.poo.bibliotecajfx.viewController;
+    opens co.edu.uniquindio.poo.bibliotecajfx.viewController to javafx.fxml;
 }

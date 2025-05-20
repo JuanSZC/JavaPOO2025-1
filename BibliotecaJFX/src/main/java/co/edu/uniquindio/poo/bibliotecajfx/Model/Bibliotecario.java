@@ -12,13 +12,29 @@ public class Bibliotecario extends Empleado {
 
     }
 
-    public void registrarLibro(Libro libro) {
-        this.getBiblioteca().getListLibros().add(libro);
+    public void registrarLibroFisico(LibroFisico libroFisico) {
+        this.getBiblioteca().getListLibros().add(libroFisico);
+    }
+    public void registrarLibroDigital(LibroDigital libroDigital) {
+        this.getBiblioteca().getListLibros().add(libroDigital);
     }
 
-    public void registrarUsuario(Usuario usuario) {
-        if (!this.getBiblioteca().getListUsuarios().contains(usuario)) {
-            this.getBiblioteca().getListUsuarios().add(usuario);
+    public void registrarLibroReferencia(LibroReferencia libroReferencia) {
+        this.getBiblioteca().getListLibros().add(libroReferencia);
+    }
+
+    public void registrarEstudiante(Estudiante estudiante) {
+        if (!this.getBiblioteca().getListUsuarios().contains(estudiante)) {
+            this.getBiblioteca().getListUsuarios().add(estudiante);
+        }
+        else {
+            this.getBiblioteca().mostrarError("Usuario ya registrado");
+        }
+    }
+
+    public void registrarDocente(Docente docente) {
+        if (!this.getBiblioteca().getListUsuarios().contains(docente)) {
+            this.getBiblioteca().getListUsuarios().add(docente);
         }
         else {
             this.getBiblioteca().mostrarError("Usuario ya registrado");
@@ -50,6 +66,8 @@ public class Bibliotecario extends Empleado {
         }
         return librosPrestados;
     }
-
+public String generarInforme(){
+        return "";
+}
 
 }

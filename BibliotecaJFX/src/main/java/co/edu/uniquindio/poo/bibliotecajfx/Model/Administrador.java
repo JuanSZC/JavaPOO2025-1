@@ -41,14 +41,30 @@ public class Administrador extends Empleado{
             if (empleado.getNombreCompleto().equals(nombreCompleto) && empleado.getContrasenia().equals(contrasenia)) {
                 return true;
             }
-
-
-
         }
         this.getBiblioteca().mostrarError("Credenciales incorrectas o no encontradas.");
         return false;
 
     }
+    public void modificarBibliotecario(Bibliotecario bibliotecarioOriginal,Bibliotecario bibliotecarioNuevo){
+        if (this.getBiblioteca().getListEmpleados().contains(bibliotecarioOriginal)) {
+            this.getBiblioteca().getListEmpleados().remove(bibliotecarioOriginal);
+            this.getBiblioteca().getListEmpleados().add(bibliotecarioNuevo);
+        }
+    }
+
+    public void modificarAdministrador(Administrador administradorOriginal,Administrador administradorNuevo){
+        if (this.getBiblioteca().getListEmpleados().contains(administradorOriginal)) {
+            this.getBiblioteca().getListEmpleados().remove(administradorOriginal);
+            this.getBiblioteca().getListEmpleados().add(administradorNuevo);
+        }
+    }
+
+
+    public String generarInformeAvanzado() {
+        return "";
+    }
+
 }
 
 
