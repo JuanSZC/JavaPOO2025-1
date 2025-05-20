@@ -51,8 +51,8 @@ public class Reserva {
     @Override
     public String toString() {
         return "Reserva{" +
-                "libro=" + libro +
-                ", usuario=" + usuario +
+                "libro=" + libro.getTitulo() +
+                ", usuario=" + usuario.getNombreCompleto()+
                 ", TiempoDias=" + tiempoDias +
                 ", fecha=" + fecha +
                 '}';
