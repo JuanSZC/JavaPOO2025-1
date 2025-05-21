@@ -1,61 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.bibliotecajfx.PantallaAdministrador">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.bibliotecajfx.viewController.pantallaAdministradorViewController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="181.0" layoutY="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1290.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1feeff" height="115.0" layoutX="1.0" layoutY="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1248.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#408adb" height="115.0" layoutX="731.0" stroke="TRANSPARENT" strokeType="INSIDE" width="559.0" />
-      <Text fx:id="txtBienvenida" fill="WHITE" layoutX="818.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion de Empleados" textAlignment="CENTER" textOrigin="CENTER">
-         <font>
-            <Font name="System Bold" size="37.0" />
-         </font>
-      </Text>
-      <Text fx:id="txtBienvenida1" fill="WHITE" layoutX="242.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrador" textAlignment="CENTER" textOrigin="CENTER">
-         <font>
-            <Font name="System Bold" size="37.0" />
-         </font>
-      </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="544.0" layoutX="738.0" layoutY="163.0" stroke="TRANSPARENT" strokeType="INSIDE" width="550.0" />
-      <Text fx:id="txtBienvenida11" layoutX="890.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información" textAlignment="CENTER" textOrigin="CENTER">
-         <font>
-            <Font name="System Bold" size="37.0" />
-         </font>
-      </Text>
-      <TextField layoutX="847.0" layoutY="270.0" prefHeight="54.0" prefWidth="299.0" />
-      <TextField layoutX="847.0" layoutY="394.0" prefHeight="54.0" prefWidth="299.0" />
-      <TextField layoutX="847.0" layoutY="526.0" prefHeight="54.0" prefWidth="299.0" />
-      <Text layoutX="969.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="974.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cédula">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <Text layoutX="959.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Text>
-      <SplitMenuButton layoutX="1130.0" layoutY="127.0" mnemonicParsing="false" text="AgregarEmpleado">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Agregar Administrador" />
-          <MenuItem mnemonicParsing="false" text="Agregar Bibliotecario" />
-        </items>
-      </SplitMenuButton>
-      <Button layoutX="966.0" layoutY="127.0" mnemonicParsing="false" text="Eliminar Empleado" />
-      <Button layoutX="803.0" layoutY="127.0" mnemonicParsing="false" text="Agregar Empleado" />
+      <TabPane prefHeight="645.0" prefWidth="1055.0" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab text="Gestion de Empleados">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9a2707" height="115.0" layoutX="545.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de Empleados">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="727.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRADOR">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Generar Informe">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9a2707" height="115.0" layoutX="545.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generar Informe">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="727.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRADOR">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

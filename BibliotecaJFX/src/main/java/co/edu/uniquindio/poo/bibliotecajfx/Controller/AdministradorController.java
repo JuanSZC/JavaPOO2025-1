@@ -29,13 +29,11 @@ public class AdministradorController {
     }
 
     public void modificarBibliotecario(Bibliotecario original, String nuevoNombre, int nuevaCedula, String nuevaContrasenia) {
-        Bibliotecario modificado = new Bibliotecario(nuevoNombre, nuevaCedula, nuevaContrasenia, administrador.getBiblioteca());
-        administrador.modificarBibliotecario(original, modificado);
+        administrador.modificarBibliotecario(original, nuevoNombre, nuevaCedula, nuevaContrasenia);
     }
 
     public void modificarAdministrador(Administrador original, String nuevoNombre, int nuevaCedula, String nuevaContrasenia) {
-        Administrador modificado = new Administrador(nuevoNombre, nuevaCedula, nuevaContrasenia, administrador.getBiblioteca());
-        administrador.modificarAdministrador(original, modificado);
+        administrador.modificarAdministrador(original, nuevoNombre, nuevaCedula, nuevaContrasenia);
     }
 
     public boolean validarCredenciales(String nombreCompleto, String contrasenia) {

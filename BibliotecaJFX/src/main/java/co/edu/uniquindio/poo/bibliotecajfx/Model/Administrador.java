@@ -46,18 +46,16 @@ public class Administrador extends Empleado{
         return false;
 
     }
-    public void modificarBibliotecario(Bibliotecario bibliotecarioOriginal,Bibliotecario bibliotecarioNuevo){
-        if (this.getBiblioteca().getListEmpleados().contains(bibliotecarioOriginal)) {
-            this.getBiblioteca().getListEmpleados().remove(bibliotecarioOriginal);
-            this.getBiblioteca().getListEmpleados().add(bibliotecarioNuevo);
-        }
+    public void modificarBibliotecario(Bibliotecario bibliotecarioOriginal,String nombreCompleto,int cedula,String contrasenia){
+      bibliotecarioOriginal.setNombreCompleto(nombreCompleto);
+      bibliotecarioOriginal.setCedula(cedula);
+      bibliotecarioOriginal.setContrasenia(contrasenia);
     }
 
-    public void modificarAdministrador(Administrador administradorOriginal,Administrador administradorNuevo){
-        if (this.getBiblioteca().getListEmpleados().contains(administradorOriginal)) {
-            this.getBiblioteca().getListEmpleados().remove(administradorOriginal);
-            this.getBiblioteca().getListEmpleados().add(administradorNuevo);
-        }
+    public void modificarAdministrador(Administrador administradorOriginal,String nombreCompleto,int cedula,String contrasenia){
+        administradorOriginal.setNombreCompleto(nombreCompleto);
+        administradorOriginal.setCedula(cedula);
+        administradorOriginal.setContrasenia(contrasenia);
     }
 
 

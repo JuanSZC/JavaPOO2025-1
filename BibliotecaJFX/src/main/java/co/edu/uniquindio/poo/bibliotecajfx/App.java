@@ -16,11 +16,12 @@ public class App extends Application {
         try {
             primaryStage.setTitle("BibliotecaJFX");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("pantallaBienvenida.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pantallaCredencialesEmpleado.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
 
         } catch (Exception e) {

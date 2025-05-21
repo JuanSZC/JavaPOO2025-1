@@ -7,14 +7,16 @@ public class Libro {
     private String genero;
     private int anio;
     private boolean estaDisponible;
+    private TipoLibro tipoLibro;
 
-    public Libro(String titulo, String autor, String editorial, String genero, int anio, boolean estaDisponible) {
+    public Libro(String titulo, String autor, String editorial, String genero, int anio, boolean estaDisponible, TipoLibro tipoLibro) {
         this.titulo = titulo;
         this.autor = autor;
         this.editorial = editorial;
         this.genero = genero;
         this.anio = anio;
         this.estaDisponible = estaDisponible;
+        this.tipoLibro = tipoLibro;
     }
 
     public String getTitulo() {
@@ -65,6 +67,14 @@ public class Libro {
         this.estaDisponible = estaDisponible;
     }
 
+    public TipoLibro getTipoLibro() {
+        return tipoLibro;
+    }
+
+    public void setTipoLibro(TipoLibro tipoLibro) {
+        this.tipoLibro = tipoLibro;
+    }
+
     @Override
     public String toString() {
         return "Libro{" +
@@ -74,6 +84,7 @@ public class Libro {
                 ", genero='" + genero + '\'' +
                 ", anio=" + anio +
                 ", estaDisponible=" + estaDisponible +
+                ", tipoLibro=" + tipoLibro +
                 '}';
     }
 }
