@@ -2,10 +2,11 @@ package co.edu.uniquindio.poo.bibliotecajfx.viewController;
 
 import co.edu.uniquindio.poo.bibliotecajfx.App;
 
-public class pantallaUsuarioViewController {
+public class PantallaBiliotecarioViewController {
     App app;
 
-    public void setApp(App app) {
-        this.app = app;
-    }
+public PantallaBiliotecarioViewController(App app) {
+    this.app = app;
+}
+
 }

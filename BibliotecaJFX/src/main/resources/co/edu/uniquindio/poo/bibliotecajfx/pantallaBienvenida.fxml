@@ -30,7 +30,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Button fx:id="btInEmpleado" layoutX="88.0" layoutY="229.0" mnemonicParsing="false" text="Entrar como Empleado" textAlignment="CENTER" />
-      <Button fx:id="btInUsuario" layoutX="404.0" layoutY="229.0" mnemonicParsing="false" text="Entrar como Usuario" textAlignment="CENTER" />
+      <Button fx:id="btInEmpleado" layoutX="88.0" layoutY="229.0" mnemonicParsing="false" onAction="#openPantallaCredencialesEmpleado" text="Entrar como Empleado" textAlignment="CENTER" />
+      <Button fx:id="btInUsuario" layoutX="404.0" layoutY="229.0" mnemonicParsing="false" onAction="#openPantallaCredencialesUsuario" text="Entrar como Usuario" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -10,12 +10,12 @@ public class AdministradorController {
         this.administrador = administrador;
     }
 
-    public void agregarBibliotecario(String nombreCompleto, int cedula, String contrasenia) {
+    public void agregarBibliotecario(String nombreCompleto, String cedula, String contrasenia) {
         Bibliotecario nuevoBibliotecario = new Bibliotecario(nombreCompleto, cedula, contrasenia, administrador.getBiblioteca());
         administrador.agregarBibliotecario(nuevoBibliotecario);
     }
 
-    public void agregarAdministrador(String nombreCompleto, int cedula, String contrasenia) {
+    public void agregarAdministrador(String nombreCompleto, String cedula, String contrasenia) {
         Administrador nuevoAdministrador = new Administrador(nombreCompleto, cedula, contrasenia, administrador.getBiblioteca());
         administrador.agregarAdministrador(nuevoAdministrador);
     }
@@ -28,16 +28,20 @@ public class AdministradorController {
         administrador.removerAdministrador(admin);
     }
 
-    public void modificarBibliotecario(Bibliotecario original, String nuevoNombre, int nuevaCedula, String nuevaContrasenia) {
+    public void modificarBibliotecario(Bibliotecario original, String nuevoNombre, String nuevaCedula, String nuevaContrasenia) {
         administrador.modificarBibliotecario(original, nuevoNombre, nuevaCedula, nuevaContrasenia);
     }
 
-    public void modificarAdministrador(Administrador original, String nuevoNombre, int nuevaCedula, String nuevaContrasenia) {
+    public void modificarAdministrador(Administrador original, String nuevoNombre, String nuevaCedula, String nuevaContrasenia) {
         administrador.modificarAdministrador(original, nuevoNombre, nuevaCedula, nuevaContrasenia);
     }
 
-    public boolean validarCredenciales(String nombreCompleto, String contrasenia) {
-        return administrador.compararCredenciales(nombreCompleto, contrasenia);
+    public boolean validarCredencialesEmpleado(String cedula, String contrasenia) {
+        return administrador.compararCredencialesEmpleados(cedula, contrasenia);
+    }
+
+    public boolean validadCredencialesUsuarios(String cedula, String contrasenia) {
+        return administrador.compararCredencialesUsuarios(cedula, contrasenia);
     }
 
     public String generarInforme() {

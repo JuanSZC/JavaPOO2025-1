@@ -1,7 +1,7 @@
 package co.edu.uniquindio.poo.bibliotecajfx.Model;
 
 public class Administrador extends Empleado{
-    public Administrador(String nombreCompleto, int cedula, String contrasenia,Biblioteca biblioteca) {
+    public Administrador(String nombreCompleto, String cedula, String contrasenia,Biblioteca biblioteca) {
         super(nombreCompleto, cedula, contrasenia, TipoTrabajo.ADMINISTRADOR,biblioteca);
     }
     public void agregarBibliotecario(Bibliotecario bibliotecario){
@@ -36,9 +36,9 @@ public class Administrador extends Empleado{
             this.getBiblioteca().mostrarError("El empleado que intenta remover no existe.");
         }
     }
-    public boolean compararCredenciales(String nombreCompleto,String contrasenia){
+    public boolean compararCredencialesEmpleados(String cedula,String contrasenia){
         for (Empleado empleado : this.getBiblioteca().getListEmpleados() ) {
-            if (empleado.getNombreCompleto().equals(nombreCompleto) && empleado.getContrasenia().equals(contrasenia)) {
+            if (empleado.getCedula().equals(cedula) && empleado.getContrasenia().equals(contrasenia)) {
                 return true;
             }
         }
@@ -46,13 +46,24 @@ public class Administrador extends Empleado{
         return false;
 
     }
-    public void modificarBibliotecario(Bibliotecario bibliotecarioOriginal,String nombreCompleto,int cedula,String contrasenia){
+
+    public boolean compararCredencialesUsuarios(String cedula,String contrasenia){
+        for (Usuario usuario : this.getBiblioteca().getListUsuarios() ) {
+            if (usuario.getCedula().equals(cedula) && usuario.getContrasenia().equals(contrasenia)) {
+                return true;
+            }
+        }
+        this.getBiblioteca().mostrarError("Credenciales incorrectas o no encontradas.");
+        return false;
+    }
+
+    public void modificarBibliotecario(Bibliotecario bibliotecarioOriginal,String nombreCompleto,String cedula,String contrasenia){
       bibliotecarioOriginal.setNombreCompleto(nombreCompleto);
       bibliotecarioOriginal.setCedula(cedula);
       bibliotecarioOriginal.setContrasenia(contrasenia);
     }
 
-    public void modificarAdministrador(Administrador administradorOriginal,String nombreCompleto,int cedula,String contrasenia){
+    public void modificarAdministrador(Administrador administradorOriginal,String nombreCompleto,String cedula,String contrasenia){
         administradorOriginal.setNombreCompleto(nombreCompleto);
         administradorOriginal.setCedula(cedula);
         administradorOriginal.setContrasenia(contrasenia);

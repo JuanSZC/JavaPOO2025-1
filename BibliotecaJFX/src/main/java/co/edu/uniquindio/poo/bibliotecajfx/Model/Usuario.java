@@ -6,13 +6,13 @@ import java.util.List;
 
 public class Usuario {
     private String nombreCompleto;
-    private int cedula;
+    private String cedula;
     private String correo;
     private String contrasenia;
     private TipoUsuario tipoUsuario;
     private List<Reserva> listReservasUsuario;
 
-    public Usuario(String nombreCompleto, int cedula, String correo, String contrasenia, TipoUsuario tipoUsuario) {
+    public Usuario(String nombreCompleto, String cedula, String correo, String contrasenia, TipoUsuario tipoUsuario) {
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;
         this.correo = correo;
@@ -35,11 +35,11 @@ public void solicitarPrestamoLibro(Libro libro, int dias){
         this.nombreCompleto = nombreCompleto;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 

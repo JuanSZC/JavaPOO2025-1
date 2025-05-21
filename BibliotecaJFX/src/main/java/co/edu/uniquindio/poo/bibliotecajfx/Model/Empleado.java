@@ -3,12 +3,12 @@ package co.edu.uniquindio.poo.bibliotecajfx.Model;
 public class Empleado {
 
     private String nombreCompleto;
-    private int cedula;
+    private String cedula;
     private String Contrasenia;
     private TipoTrabajo tipoTrabajo;
     private Biblioteca biblioteca;
 
-    public Empleado(String nombreCompleto, int cedula, String contrasenia, TipoTrabajo tipoTrabajo, Biblioteca biblioteca) {
+    public Empleado(String nombreCompleto, String cedula, String contrasenia, TipoTrabajo tipoTrabajo, Biblioteca biblioteca) {
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;
         this.Contrasenia = contrasenia;
@@ -24,11 +24,11 @@ public class Empleado {
         this.nombreCompleto = nombreCompleto;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 

@@ -10,6 +10,15 @@ import javafx.scene.text.Text;
 public class PantallaBienvenidaViewController {
     App app;
 
+    @FXML
+    void openPantallaCredencialesEmpleado(){
+        app.openPantallaCredencialesEmpleado();
+    }
+
+    @FXML
+    void openPantallaCredencialesUsuario(){
+        app.openPantallaCredencialesUsuario();
+    }
 
     public void setApp(App app) {
         this.app = app;

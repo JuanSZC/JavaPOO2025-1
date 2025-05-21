@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -28,6 +34,33 @@
                               <Font name="System Bold" size="37.0" />
                            </font>
                         </Text>
+                        <TableView fx:id="tbGestionEmpleados" layoutY="162.0" prefHeight="457.0" prefWidth="713.0">
+                          <columns>
+                            <TableColumn fx:id="tbcolNombre" prefWidth="195.0" text="Nombre" />
+                            <TableColumn fx:id="tbcolCedula" prefWidth="136.0" text="Cedula" />
+                              <TableColumn fx:id="tbcolContrasenia" prefWidth="171.0" text="Contraseña" />
+                              <TableColumn fx:id="tbcolTipoTrabajo" prefWidth="210.0" text="Tipo de Trabajo" />
+                          </columns>
+                        </TableView>
+                        <TextField fx:id="fiNombre" layoutX="785.0" layoutY="255.0" prefHeight="25.0" prefWidth="255.0" />
+                        <Text layoutX="723.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+                        <TextField fx:id="fiCedula" layoutX="787.0" layoutY="308.0" prefHeight="25.0" prefWidth="253.0" />
+                        <Text layoutX="723.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" />
+                        <TextField fx:id="fiContrasenia" layoutX="789.0" layoutY="359.0" prefHeight="25.0" prefWidth="251.0" />
+                        <Text layoutX="720.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
+                        <Text layoutX="814.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información:">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btEliminarEmpleado" layoutX="725.0" layoutY="419.0" mnemonicParsing="false" text="Eliminar Empleado" />
+                        <Button fx:id="bt_modificarEmpleado" layoutX="918.0" layoutY="419.0" mnemonicParsing="false" text="Modificar Empleado" />
+                        <MenuButton fx:id="spbtAgregarEmpleado" layoutX="818.0" layoutY="464.0" mnemonicParsing="false" text="Agregar Empleado">
+                          <items>
+                            <MenuItem id="btAgregarBibliotecario" fx:id="btAg" mnemonicParsing="false" text="Agregar Bibliotecario" />
+                            <MenuItem id="btAgregarAdministrador" mnemonicParsing="false" text="Agregar Administrador" />
+                          </items>
+                        </MenuButton>
                      </children>
                   </AnchorPane>
               </content>

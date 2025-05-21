@@ -1,4 +1,4 @@
 package co.edu.uniquindio.poo.bibliotecajfx.viewController;
 
-public class pantallaVisitanteViewController {
+public class PantallaVisitanteViewController {
 }
