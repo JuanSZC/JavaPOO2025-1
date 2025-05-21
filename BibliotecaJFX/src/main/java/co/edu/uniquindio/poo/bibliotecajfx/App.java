@@ -46,6 +46,7 @@ public class App extends Application {
 
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.centerOnScreen();
 
             stage.show();
 
@@ -63,6 +64,8 @@ public class App extends Application {
 
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
+            stage.setResizable(false);
+            stage.centerOnScreen();
 
             stage.show();
             AdministradorController administradorController = new AdministradorController(this.administrador);
@@ -85,6 +88,8 @@ public class App extends Application {
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
             AdministradorController administradorController = new AdministradorController(this.administrador);
             controlador.setAdministradorController(administradorController);
 
@@ -105,6 +110,7 @@ public class App extends Application {
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
             stage.setResizable(false);
+            stage.centerOnScreen();
             stage.show();
 
 
