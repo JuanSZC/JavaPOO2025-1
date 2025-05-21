@@ -10,42 +10,34 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaCredencialesUsuarioViewController">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane prefHeight="400.0" prefWidth="589.0">
          <children>
-            <AnchorPane prefHeight="400.0" prefWidth="600.0">
-               <children>
-                  <AnchorPane prefHeight="400.0" prefWidth="589.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" layoutX="-5.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="609.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1feeff" height="115.0" layoutY="-9.0" stroke="TRANSPARENT" strokeType="INSIDE" width="603.0" />
-                        <Text fill="WHITE" layoutX="50.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar sesión" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="519.0">
-                           <font>
-                              <Font name="System Bold" size="37.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="35.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa la informacion del Usuario" textAlignment="CENTER" wrappingWidth="549.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                        <TextField fx:id="tfCedula" layoutX="193.0" layoutY="199.0" prefHeight="25.0" prefWidth="232.0" />
-                        <Text layoutX="100.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" textAlignment="CENTER" wrappingWidth="419.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="45.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" textAlignment="CENTER" wrappingWidth="528.0">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Text>
-                        <Button fx:id="btIniciarSesion" layoutX="266.0" layoutY="353.0" mnemonicParsing="false" onAction="#iniciarSesionUsuario" text="Iniciar Sesión" />
-                        <PasswordField fx:id="pfContrasenia" layoutX="193.0" layoutY="283.0" prefHeight="25.0" prefWidth="232.0" />
-                        <Button layoutX="4.0" layoutY="371.0" mnemonicParsing="false" onAction="#openPantallaBienvenida" text="Cancelar" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" layoutX="-5.0" layoutY="-7.0" stroke="TRANSPARENT" strokeType="INSIDE" width="609.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff8b21" height="115.0" layoutY="-9.0" stroke="TRANSPARENT" strokeType="INSIDE" width="603.0" />
+            <Text fill="WHITE" layoutX="50.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iniciar sesión" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="519.0">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Text>
+            <Text layoutX="35.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa la informacion del Usuario" textAlignment="CENTER" wrappingWidth="549.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tfCedula" layoutX="193.0" layoutY="199.0" prefHeight="25.0" prefWidth="232.0" />
+            <Text layoutX="100.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" textAlignment="CENTER" wrappingWidth="419.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="45.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" textAlignment="CENTER" wrappingWidth="528.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button fx:id="btIniciarSesion" layoutX="266.0" layoutY="353.0" mnemonicParsing="false" onAction="#iniciarSesionUsuario" text="Iniciar Sesión" />
+            <PasswordField fx:id="pfContrasenia" layoutX="193.0" layoutY="283.0" prefHeight="25.0" prefWidth="232.0" />
+            <Button layoutX="4.0" layoutY="371.0" mnemonicParsing="false" onAction="#openPantallaBienvenida" text="Cancelar" />
          </children>
       </AnchorPane>
    </children>

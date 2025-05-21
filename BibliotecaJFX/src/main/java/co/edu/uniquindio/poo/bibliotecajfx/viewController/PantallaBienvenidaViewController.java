@@ -19,6 +19,11 @@ public class PantallaBienvenidaViewController {
     void openPantallaCredencialesUsuario(){
         app.openPantallaCredencialesUsuario();
     }
+    @FXML
+    void openPantallaVisitante() {
+        app.openPantallaVisitante();
+    }
+
 
     public void setApp(App app) {
         this.app = app;

@@ -5,6 +5,7 @@ import co.edu.uniquindio.poo.bibliotecajfx.Model.*;
 import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaBienvenidaViewController;
 import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaCredencialesEmpleadoViewController;
 import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaCredencialesUsuarioViewController;
+import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaVisitanteViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -86,6 +87,25 @@ public class App extends Application {
             stage.show();
             AdministradorController administradorController = new AdministradorController(this.administrador);
             controlador.setAdministradorController(administradorController);
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void openPantallaVisitante(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/bibliotecajfx/pantallaVisitante.fxml"));
+            AnchorPane rootLayout= loader.load();
+
+            PantallaVisitanteViewController controlador = loader.getController();
+            controlador.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
 
 
         } catch (IOException ex) {
