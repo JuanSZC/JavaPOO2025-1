@@ -36,6 +36,21 @@ public class BibliotecarioController {
         bibliotecario.prestarLibro(libro, usuario, tiempoDias);
 
     }
+    public void eliminarUsuario(Usuario usuario) {
+        this.bibliotecario.removerUsuario(usuario);
+    }
+
+    public void eliminarLibro(Libro libro) {
+        this.bibliotecario.elmininarLibro(libro);
+    }
+
+    public void modificarUsuario(Usuario usuario,String nombre,String cedula, String correo, String contrasena) {
+        this.bibliotecario.modificarUsuario(usuario,nombre,cedula,correo,contrasena);
+    }
+
+    public void modificarLibro(Libro libro,String titulo, String autor, String editorial, String genero, int anio, boolean estaDisponible) {
+        this.bibliotecario.modificarLibro(libro,titulo, autor,editorial,genero,anio,estaDisponible);
+    }
 
     public void devolverLibro(Reserva reserva) {
         bibliotecario.devolverLibro(reserva);

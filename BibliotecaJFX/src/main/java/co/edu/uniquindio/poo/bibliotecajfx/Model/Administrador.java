@@ -20,22 +20,14 @@ public class Administrador extends Empleado{
             this.getBiblioteca().mostrarError("El empleado ya existe.");
         }
     }
-    public void removerBibliotecario(Bibliotecario bibliotecario){
-        if (this.getBiblioteca().getListEmpleados().contains(bibliotecario)) {
-        this.getBiblioteca().getListEmpleados().remove(bibliotecario);
-        }
-        else{
+    public void removerEmpleado(Empleado empleado) {
+        if (this.getBiblioteca().getListEmpleados().contains(empleado)) {
+            this.getBiblioteca().getListEmpleados().remove(empleado);
+        } else {
             this.getBiblioteca().mostrarError("El empleado que intenta remover no existe.");
         }
     }
-    public void removerAdministrador(Administrador administrador){
-        if (this.getBiblioteca().getListEmpleados().contains(administrador)) {
-            this.getBiblioteca().getListEmpleados().remove(administrador);
-        }
-        else{
-            this.getBiblioteca().mostrarError("El empleado que intenta remover no existe.");
-        }
-    }
+
     public boolean compararCredencialesEmpleados(String cedula,String contrasenia){
         for (Empleado empleado : this.getBiblioteca().getListEmpleados() ) {
             if (empleado.getCedula().equals(cedula) && empleado.getContrasenia().equals(contrasenia)) {
@@ -76,17 +68,12 @@ public class Administrador extends Empleado{
 
     }
 
-    public void modificarBibliotecario(Bibliotecario bibliotecarioOriginal,String nombreCompleto,String cedula,String contrasenia){
-      bibliotecarioOriginal.setNombreCompleto(nombreCompleto);
-      bibliotecarioOriginal.setCedula(cedula);
-      bibliotecarioOriginal.setContrasenia(contrasenia);
+    public void modificarEmpleado(Empleado empleado,String nombreCompleto,String cedula,String contrasenia){
+      empleado.setNombreCompleto(nombreCompleto);
+      empleado.setCedula(cedula);
+      empleado.setContrasenia(contrasenia);
     }
 
-    public void modificarAdministrador(Administrador administradorOriginal,String nombreCompleto,String cedula,String contrasenia){
-        administradorOriginal.setNombreCompleto(nombreCompleto);
-        administradorOriginal.setCedula(cedula);
-        administradorOriginal.setContrasenia(contrasenia);
-    }
 
 
     public String generarInformeAvanzado() {

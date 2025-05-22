@@ -20,20 +20,12 @@ public class AdministradorController {
         administrador.agregarAdministrador(nuevoAdministrador);
     }
 
-    public void removerBibliotecario(Bibliotecario bibliotecario) {
-        administrador.removerBibliotecario(bibliotecario);
+    public void removerEmpleado(Empleado empleado) {
+       this.administrador.removerEmpleado(empleado);
     }
 
-    public void removerAdministrador(Administrador admin) {
-        administrador.removerAdministrador(admin);
-    }
-
-    public void modificarBibliotecario(Bibliotecario original, String nuevoNombre, String nuevaCedula, String nuevaContrasenia) {
-        administrador.modificarBibliotecario(original, nuevoNombre, nuevaCedula, nuevaContrasenia);
-    }
-
-    public void modificarAdministrador(Administrador original, String nuevoNombre, String nuevaCedula, String nuevaContrasenia) {
-        administrador.modificarAdministrador(original, nuevoNombre, nuevaCedula, nuevaContrasenia);
+    public void modificarEmpleado(Empleado empleado, String nuevoNombre, String nuevaCedula, String nuevaContrasenia) {
+        administrador.modificarEmpleado(empleado, nuevoNombre, nuevaCedula, nuevaContrasenia);
     }
 
     public boolean validarCredencialesEmpleado(String cedula, String contrasenia) {

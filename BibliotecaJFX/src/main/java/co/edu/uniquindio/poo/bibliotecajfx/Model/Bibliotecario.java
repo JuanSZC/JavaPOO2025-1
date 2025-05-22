@@ -30,6 +30,7 @@ public class Bibliotecario extends Empleado {
         }
     }
 
+
     public void registrarDocente(Docente docente) {
         if (!this.getBiblioteca().getListUsuarios().contains(docente)) {
             this.getBiblioteca().getListUsuarios().add(docente);
@@ -57,6 +58,30 @@ public class Bibliotecario extends Empleado {
         } else {
             this.getBiblioteca().mostrarError("La reserva no existe");
         }
+    }
+
+    public void removerUsuario(Usuario usuario) {
+        this.getBiblioteca().getListUsuarios().remove(usuario);
+    }
+
+    public void modificarUsuario(Usuario usuario,String nombre,String cedula,String correo,String contrasenia) {
+        usuario.setNombreCompleto(nombre);
+        usuario.setCedula(cedula);
+        usuario.setCorreo(correo);
+        usuario.setContrasenia(contrasenia);
+    }
+
+    public void modificarLibro(Libro libro,String titulo, String autor, String editorial, String genero, int anio, boolean estaDisponible) {
+        libro.setTitulo(titulo);
+        libro.setAutor(autor);
+        libro.setEditorial(editorial);
+        libro.setGenero(genero);
+        libro.setAnio(anio);
+        libro.setEstaDisponible(estaDisponible);
+    }
+
+    public void elmininarLibro(Libro libro) {
+        this.getBiblioteca().getListLibros().remove(libro);
     }
 
     public List<Libro> obtenerLibrosPrestados() {
