@@ -4,18 +4,26 @@ import co.edu.uniquindio.poo.bibliotecajfx.Controller.AdministradorController;
 import co.edu.uniquindio.poo.bibliotecajfx.Model.*;
 import co.edu.uniquindio.poo.bibliotecajfx.viewController.*;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App extends Application {
     private Stage stage;
-    private final Biblioteca bliblioteca = new Biblioteca("Universidad del Quindio",1234,"Cra 15 #12N, Armenia, Quindío");
-    private final Administrador administrador = new Administrador("Juan Sebastian Zambrano", "1145724059", "contraseña", bliblioteca);
-    private final Bibliotecario bibliotecario = new Bibliotecario("Miguel Giraldo","123456789","Contrasenia",bliblioteca);
+    private final Biblioteca biblioteca = new Biblioteca("Universidad del Quindio",1234,"Cra 15 #12N, Armenia, Quindío");
+    private final Administrador administrador = new Administrador("Juan Sebastian Zambrano", "1145724059", "contraseña", biblioteca);
+    private final Bibliotecario bibliotecario = new Bibliotecario("Miguel Giraldo","123456789","Contrasenia",biblioteca);
+    ObservableList<Usuario> listUsuarios;
+    ObservableList<Libro> listLibros;
+    ObservableList<Empleado> listEmpleados;
+    ObservableList<Reserva> listReservas;
 
 
 
@@ -24,7 +32,8 @@ public class App extends Application {
         inicializarData();
         this.stage = primaryStage;
         primaryStage.setTitle("BibliotecaUQ");
-        openPantallaBienvenida();
+        openPantallaBibliotecario();
+
     }
 
     public void openPantallaBienvenida() {
@@ -115,6 +124,7 @@ public class App extends Application {
     }
 
     public void openPantallaBibliotecario(){
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/bibliotecajfx/pantallaBibliotecario.fxml"));
             AnchorPane rootLayout= loader.load();
@@ -122,11 +132,15 @@ public class App extends Application {
             PantallaBibliotecarioViewController controlador = loader.getController();
             controlador.setApp(this);
 
+
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
             stage.setResizable(false);
             stage.centerOnScreen();
             stage.show();
+            controlador.setListUsuarios(this.listUsuarios);
+            controlador.setListLibrosFisicos(this.listLibros);
+
 
 
 
@@ -235,6 +249,15 @@ public class App extends Application {
         bibliotecario.registrarLibroReferencia(ref3);
 
        bibliotecario.prestarLibro(libro1,estudiante1,10);
+
+
+       listUsuarios = FXCollections.observableArrayList(biblioteca.getListUsuarios());
+       listEmpleados= FXCollections.observableArrayList(biblioteca.getListEmpleados());
+       listLibros = FXCollections.observableArrayList(biblioteca.getListLibros());
+       listReservas = FXCollections.observableArrayList(biblioteca.getListReservas());
+
+
+
     }
 
 
