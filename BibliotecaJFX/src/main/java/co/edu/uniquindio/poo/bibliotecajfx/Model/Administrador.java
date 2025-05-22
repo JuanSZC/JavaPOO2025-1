@@ -46,6 +46,24 @@ public class Administrador extends Empleado{
         return false;
 
     }
+    public Empleado obtenerCredencialesEmpleados(String cedula) {
+        for (Empleado empleado : this.getBiblioteca().getListEmpleados()) {
+            if (empleado.getCedula().equals(cedula)) {
+                return empleado;
+            }
+        }
+        return null;
+    }
+
+    public Usuario obtenerCredencialesUsuarios(String cedula) {
+        for (Usuario usuario : this.getBiblioteca().getListUsuarios()) {
+            if (usuario.getCedula().equals(cedula)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
 
     public boolean compararCredencialesUsuarios(String cedula,String contrasenia){
         for (Usuario usuario : this.getBiblioteca().getListUsuarios() ) {
@@ -55,6 +73,7 @@ public class Administrador extends Empleado{
         }
         this.getBiblioteca().mostrarError("Credenciales incorrectas o no encontradas.");
         return false;
+
     }
 
     public void modificarBibliotecario(Bibliotecario bibliotecarioOriginal,String nombreCompleto,String cedula,String contrasenia){

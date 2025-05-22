@@ -27,30 +27,11 @@ public class PantallaAdministradorViewController {
     @FXML
     TableColumn<Empleado,String> tbcolContrasenia;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void setApp(App app) {
         this.app = app;
     }
+
+
+
 
 }

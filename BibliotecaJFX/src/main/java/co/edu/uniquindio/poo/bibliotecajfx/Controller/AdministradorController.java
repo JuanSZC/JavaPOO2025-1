@@ -40,7 +40,15 @@ public class AdministradorController {
         return administrador.compararCredencialesEmpleados(cedula, contrasenia);
     }
 
-    public boolean validadCredencialesUsuarios(String cedula, String contrasenia) {
+    public Empleado obtenerEmpleado(String cedula) {
+        return administrador.obtenerCredencialesEmpleados(cedula);
+    }
+
+    public Usuario obtenerUsuario(String cedula) {
+        return administrador.obtenerCredencialesUsuarios(cedula);
+    }
+
+    public boolean validadCredencialesUsuario(String cedula, String contrasenia) {
         return administrador.compararCredencialesUsuarios(cedula, contrasenia);
     }
 

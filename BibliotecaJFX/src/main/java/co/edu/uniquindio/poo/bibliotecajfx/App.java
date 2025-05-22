@@ -2,20 +2,14 @@ package co.edu.uniquindio.poo.bibliotecajfx;
 
 import co.edu.uniquindio.poo.bibliotecajfx.Controller.AdministradorController;
 import co.edu.uniquindio.poo.bibliotecajfx.Model.*;
-import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaBienvenidaViewController;
-import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaCredencialesEmpleadoViewController;
-import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaCredencialesUsuarioViewController;
-import co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaVisitanteViewController;
+import co.edu.uniquindio.poo.bibliotecajfx.viewController.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Objects;
 
 public class App extends Application {
     private Stage stage;
@@ -99,6 +93,70 @@ public class App extends Application {
         }
     }
 
+    public void openPantallaAdministrador(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/bibliotecajfx/pantallaAdministrador.fxml"));
+            AnchorPane rootLayout= loader.load();
+
+            PantallaAdministradorViewController controlador = loader.getController();
+            controlador.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.show();
+
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void openPantallaBibliotecario(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/bibliotecajfx/pantallaBibliotecario.fxml"));
+            AnchorPane rootLayout= loader.load();
+
+            PantallaBibliotecarioViewController controlador = loader.getController();
+            controlador.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.show();
+
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+
+    public void openPantallaUsuario(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/bibliotecajfx/pantallaUsuario.fxml"));
+            AnchorPane rootLayout= loader.load();
+
+            PantallaUsuarioViewController controlador = loader.getController();
+            controlador.setApp(this);
+
+            Scene scene = new Scene(rootLayout);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.show();
+
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void openPantallaVisitante(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/poo/bibliotecajfx/pantallaVisitante.fxml"));
@@ -118,6 +176,7 @@ public class App extends Application {
             ex.printStackTrace();
         }
     }
+
 
 
 
