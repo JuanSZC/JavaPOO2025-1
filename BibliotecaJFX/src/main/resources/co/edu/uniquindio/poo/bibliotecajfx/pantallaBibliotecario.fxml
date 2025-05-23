@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
@@ -45,28 +45,29 @@
                               <TableColumn fx:id="tbcTipoUsuario" prefWidth="177.0" text="Tipo de Usuario" />
                            </columns>
                         </TableView>
-                        <TextField layoutX="992.0" layoutY="239.0" prefHeight="25.0" prefWidth="255.0" />
+                        <TextField fx:id="tfNombreUsuario" layoutX="992.0" layoutY="239.0" prefHeight="25.0" prefWidth="255.0" />
                         <Text layoutX="930.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
-                        <TextField layoutX="994.0" layoutY="292.0" prefHeight="25.0" prefWidth="253.0" />
+                        <TextField fx:id="tfCedulaUsuario" layoutX="994.0" layoutY="292.0" prefHeight="25.0" prefWidth="253.0" />
                         <Text layoutX="930.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" />
-                        <TextField layoutX="996.0" layoutY="343.0" prefHeight="25.0" prefWidth="251.0" />
+                        <TextField fx:id="tfContraseniaUsuario" layoutX="996.0" layoutY="343.0" prefHeight="25.0" prefWidth="251.0" />
                         <Text layoutX="927.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
                         <Text layoutX="1022.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información:">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Text>
-                        <Button layoutX="939.0" layoutY="459.0" mnemonicParsing="false" text="Eliminar Usuario" />
-                        <Button layoutX="1132.0" layoutY="459.0" mnemonicParsing="false" text="Modificar Usuario" />
+                        <Button fx:id="btEliminarUsuario" layoutX="939.0" layoutY="459.0" mnemonicParsing="false" onAction="#eliminarUsuario" text="Eliminar Usuario" />
+                        <Button fx:id="btModificarUsuario" layoutX="1132.0" layoutY="459.0" mnemonicParsing="false" onAction="#modificarUsuario" text="Modificar Usuario" />
                         <MenuButton layoutX="1032.0" layoutY="504.0" mnemonicParsing="false" text="Agregar Usuario">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Agregar Docente" />
-                              <MenuItem mnemonicParsing="false" text="Agregar Usuario" />
+                              <MenuItem mnemonicParsing="false" onAction="#agregarDocente" text="Agregar Docente" />
+                              <MenuItem mnemonicParsing="false" onAction="#agregarEstudiante" text="Agregar Estudiante" />
                            </items>
                         </MenuButton>
-                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" text="Cerrar Sesion" />
-                        <TextField layoutX="995.0" layoutY="391.0" prefHeight="25.0" prefWidth="251.0" />
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
+                        <TextField fx:id="tfCorreoUsuario" layoutX="995.0" layoutY="391.0" prefHeight="25.0" prefWidth="251.0" />
                         <Text layoutX="930.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:" />
+                        <Button fx:id="btEliminarUsuario1" layoutX="1063.0" layoutY="550.0" mnemonicParsing="false" onAction="#limpiarUsuario" text="Limpiar" />
                      </children>
                   </AnchorPane>
                </content>
@@ -111,14 +112,14 @@
                                           <Button layoutX="945.0" layoutY="345.0" mnemonicParsing="false" text="Agregar Libro" />
                                           <Button layoutX="1151.0" layoutY="345.0" mnemonicParsing="false" text="Modificar Libro" />
                                           <Button layoutX="1049.0" layoutY="345.0" mnemonicParsing="false" text="Eliminar Libro" />
-                                          <TableView prefHeight="541.0" prefWidth="937.0">
+                                          <TableView fx:id="tbLibrosDigitales" prefHeight="541.0" prefWidth="937.0">
                                             <columns>
-                                              <TableColumn prefWidth="185.0" text="Titulo" />
-                                              <TableColumn prefWidth="181.0" text="Autor" />
-                                                <TableColumn prefWidth="143.0" text="Genero" />
-                                                <TableColumn prefWidth="167.0" text="Año" />
-                                                <TableColumn prefWidth="140.0" text="Disponible" />
-                                                <TableColumn prefWidth="120.0" text="Formato" />
+                                              <TableColumn fx:id="tbcTituloDigital" prefWidth="185.0" text="Titulo" />
+                                              <TableColumn fx:id="tbcAutorDigital" prefWidth="181.0" text="Autor" />
+                                                <TableColumn fx:id="tbcGeneroDigital" prefWidth="143.0" text="Genero" />
+                                                <TableColumn fx:id="tbcAnioDigital" prefWidth="167.0" text="Año" />
+                                                <TableColumn fx:id="tbcDisponibleDigital" prefWidth="140.0" text="Disponible" />
+                                                <TableColumn fx:id="tbcFormatoDigital" prefWidth="120.0" text="Formato" />
                                             </columns>
                                           </TableView>
                                           <MenuButton layoutX="1000.0" layoutY="246.0" mnemonicParsing="false" text="Formato">
@@ -153,13 +154,13 @@
                                           <Button layoutX="945.0" layoutY="345.0" mnemonicParsing="false" text="Agregar Libro" />
                                           <Button layoutX="1151.0" layoutY="345.0" mnemonicParsing="false" text="Modificar Libro" />
                                           <Button layoutX="1049.0" layoutY="345.0" mnemonicParsing="false" text="Eliminar Libro" />
-                                          <TableView prefHeight="541.0" prefWidth="937.0">
+                                          <TableView fx:id="tbLibrosReferencias" prefHeight="541.0" prefWidth="937.0">
                                              <columns>
-                                                <TableColumn prefWidth="185.0" text="Titulo" />
-                                                <TableColumn prefWidth="217.0" text="Autor" />
-                                                <TableColumn prefWidth="258.0" text="Editorial" />
-                                                <TableColumn prefWidth="161.0" text="Genero" />
-                                                <TableColumn prefWidth="115.0" text="Año" />
+                                                <TableColumn fx:id="tbcTituloReferencia" prefWidth="185.0" text="Titulo" />
+                                                <TableColumn fx:id="tbcAutorReferencia" prefWidth="217.0" text="Autor" />
+                                                <TableColumn fx:id="tbcEditorialReferencia" prefWidth="258.0" text="Editorial" />
+                                                <TableColumn fx:id="tbcGeneroReferencia" prefWidth="161.0" text="Genero" />
+                                                <TableColumn fx:id="tbcAnioReferencia" prefWidth="115.0" text="Año" />
                                              </columns>
                                           </TableView>
                                        </children>
@@ -205,7 +206,7 @@
                               </Tab>
                           </tabs>
                         </TabPane>
-                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" text="Cerrar Sesion" />
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
                      </children>
                   </AnchorPane>
                </content>
@@ -227,12 +228,13 @@
                               <Font name="System Bold" size="37.0" />
                            </font>
                         </Text>
-                        <TableView layoutY="162.0" prefHeight="571.0" prefWidth="917.0">
+                        <TableView fx:id="tbReservas" layoutY="162.0" prefHeight="571.0" prefWidth="917.0">
                            <columns>
-                              <TableColumn prefWidth="339.0" text="Libro" />
-                              <TableColumn prefWidth="268.0" text="Usuario" />
-                              <TableColumn prefWidth="187.0" text="Tipo de Usuario" />
-                              <TableColumn minWidth="0.0" prefWidth="122.0" text="Tiempo (Dias)" />
+                              <TableColumn fx:id="tbcLibroReserva" prefWidth="229.0" text="Libro" />
+                              <TableColumn fx:id="tbcUsuarioReserva" prefWidth="209.0" text="Usuario" />
+                              <TableColumn fx:id="tbcTipoUsuarioReserva" prefWidth="174.0" text="Tipo de Usuario" />
+                              <TableColumn fx:id="tbcFechaReserva" prefWidth="185.0" text="Fecha de Reserva" />
+                              <TableColumn fx:id="tbcTiempoReserva" minWidth="0.0" prefWidth="119.0" text="Tiempo (Dias)" />
                            </columns>
                         </TableView>
                         <Text layoutX="1008.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregar Reserva">
@@ -240,15 +242,17 @@
                               <Font size="25.0" />
                            </font>
                         </Text>
-                        <Button layoutX="1047.0" layoutY="492.0" mnemonicParsing="false" text="Eliminar Reserva" />
-                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" text="Cerrar Sesion" />
-                        <ComboBox layoutX="1067.0" layoutY="268.0" prefWidth="150.0" />
-                        <ComboBox layoutX="1067.0" layoutY="311.0" prefWidth="150.0" />
-                        <ComboBox layoutX="1173.0" layoutY="353.0" prefHeight="25.0" prefWidth="9.0" />
-                        <Text layoutX="1021.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" />
-                        <Text layoutX="1035.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libro:" />
+                        <Button layoutX="1047.0" layoutY="492.0" mnemonicParsing="false" onAction="#eliminarReserva" text="Eliminar Reserva" />
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
+                        <Text layoutX="983.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula de Usuario:" />
+                        <Text layoutX="1053.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libro:" />
                         <Text layoutX="1098.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiempo Dias:" />
-                        <Button layoutX="1147.0" layoutY="398.0" mnemonicParsing="false" text="Agregar Reserva" />
+                        <Button layoutX="1147.0" layoutY="398.0" mnemonicParsing="false" onAction="#agregarReserva" text="Agregar Reserva" />
+                        <Accordion layoutX="983.0" layoutY="576.0" />
+                        <TextField fx:id="tfLibroReserva" layoutX="1090.0" layoutY="311.0" prefHeight="25.0" prefWidth="163.0" />
+                        <TextField fx:id="tfUsuarioReserva" layoutX="1090.0" layoutY="268.0" prefHeight="25.0" prefWidth="163.0" />
+                        <TextField fx:id="tfTiempoReserva" layoutX="1172.0" layoutY="353.0" prefHeight="25.0" prefWidth="80.0" />
+                        <Button fx:id="btEliminarUsuario11" layoutX="1070.0" layoutY="527.0" mnemonicParsing="false" onAction="#limpiarReserva" text="Limpiar" />
                      </children>
                   </AnchorPane>
                </content>

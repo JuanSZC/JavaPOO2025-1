@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.bibliotecajfx;
 
 import co.edu.uniquindio.poo.bibliotecajfx.Controller.AdministradorController;
+import co.edu.uniquindio.poo.bibliotecajfx.Controller.BibliotecarioController;
 import co.edu.uniquindio.poo.bibliotecajfx.Model.*;
 import co.edu.uniquindio.poo.bibliotecajfx.viewController.*;
 import javafx.application.Application;
@@ -18,8 +19,8 @@ import java.util.List;
 public class App extends Application {
     private Stage stage;
     private final Biblioteca biblioteca = new Biblioteca("Universidad del Quindio",1234,"Cra 15 #12N, Armenia, Quindío");
-    private final Administrador administrador = new Administrador("Juan Sebastian Zambrano", "1145724059", "contraseña", biblioteca);
-    private final Bibliotecario bibliotecario = new Bibliotecario("Miguel Giraldo","123456789","Contrasenia",biblioteca);
+    private final Administrador administradorPrincipal = new Administrador("Juan Sebastian Zambrano", "1145724059", "contraseña", biblioteca);
+    private final Bibliotecario bibliotecarioPrincipal = new Bibliotecario("Miguel Giraldo","123456789","Contrasenia",biblioteca);
     ObservableList<Usuario> listUsuarios;
     ObservableList<Libro> listLibros;
     ObservableList<Empleado> listEmpleados;
@@ -71,7 +72,7 @@ public class App extends Application {
             stage.centerOnScreen();
 
             stage.show();
-            AdministradorController administradorController = new AdministradorController(this.administrador);
+            AdministradorController administradorController = new AdministradorController(this.administradorPrincipal);
             controlador.setAdministradorController(administradorController);
 
         } catch (IOException ex) {
@@ -93,7 +94,7 @@ public class App extends Application {
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
-            AdministradorController administradorController = new AdministradorController(this.administrador);
+            AdministradorController administradorController = new AdministradorController(this.administradorPrincipal);
             controlador.setAdministradorController(administradorController);
 
 
@@ -130,6 +131,7 @@ public class App extends Application {
             AnchorPane rootLayout= loader.load();
 
             PantallaBibliotecarioViewController controlador = loader.getController();
+            BibliotecarioController bibliotecarioControlador = new BibliotecarioController(this.bibliotecarioPrincipal);
             controlador.setApp(this);
 
 
@@ -138,8 +140,14 @@ public class App extends Application {
             stage.setResizable(false);
             stage.centerOnScreen();
             stage.show();
+            controlador.setListLibros(this.listLibros);
             controlador.setListUsuarios(this.listUsuarios);
             controlador.setListLibrosFisicos(this.listLibros);
+            controlador.setListLibrosDigitales(this.listLibros);
+            controlador.setListLibrosReferencia(this.listLibros);
+            controlador.setListReservas(this.listReservas);
+            controlador.setBibliotecarioController(bibliotecarioControlador);
+
 
 
 
@@ -197,58 +205,58 @@ public class App extends Application {
 
 
     public void inicializarData() {
-        administrador.agregarAdministrador(administrador);
-        administrador.agregarBibliotecario(bibliotecario);
+        administradorPrincipal.agregarAdministrador(administradorPrincipal);
+        administradorPrincipal.agregarBibliotecario(bibliotecarioPrincipal);
 
 
         Estudiante estudiante1 = new Estudiante("Ana Gómez", "123456", "ana@gemail.com", "pass123");
-        bibliotecario.registrarEstudiante(estudiante1);
+        bibliotecarioPrincipal.registrarEstudiante(estudiante1);
         Estudiante estudiante2 = new Estudiante("Carlos Pérez", "234567", "carlos@correo.com", "carlospass");
-        bibliotecario.registrarEstudiante(estudiante2);
+        bibliotecarioPrincipal.registrarEstudiante(estudiante2);
         Estudiante estudiante3 = new Estudiante("Lucía Martínez", "345678", "lucia@uni.com", "lucia123");
-        bibliotecario.registrarEstudiante(estudiante3);
+        bibliotecarioPrincipal.registrarEstudiante(estudiante3);
         Estudiante estudiante4 = new Estudiante("Juan Torres", "456789", "juan@estudiantes.com", "juan456");
-        bibliotecario.registrarEstudiante(estudiante4);
+        bibliotecarioPrincipal.registrarEstudiante(estudiante4);
         Estudiante estudiante5 = new Estudiante("Marta Ruiz", "567890", "marta@email.com", "marta789");
-        bibliotecario.registrarEstudiante(estudiante5);
+        bibliotecarioPrincipal.registrarEstudiante(estudiante5);
 
         Docente docente1 = new Docente("Luis Herrera", "101001", "luis@universidad.com", "docente123");
-        bibliotecario.registrarDocente(docente1);
+        bibliotecarioPrincipal.registrarDocente(docente1);
         Docente docente2 = new Docente("María Restrepo", "101002", "maria@universidad.com", "restrepo456");
-        bibliotecario.registrarDocente(docente2);
+        bibliotecarioPrincipal.registrarDocente(docente2);
         Docente docente3 = new Docente("Pedro Salazar", "101003", "pedro@universidad.com", "salazar789");
-        bibliotecario.registrarDocente(docente3);
+        bibliotecarioPrincipal.registrarDocente(docente3);
         Docente docente4 = new Docente("Claudia López", "101004", "claudia@universidad.com", "claudia2024");
-        bibliotecario.registrarDocente(docente4);
+        bibliotecarioPrincipal.registrarDocente(docente4);
         Docente docente5 = new Docente("Andrés Villa", "101005", "andres@universidad.com", "villaabc");
-        bibliotecario.registrarDocente(docente5);
+        bibliotecarioPrincipal.registrarDocente(docente5);
 
         LibroFisico libro1 = new LibroFisico("Cien años de soledad", "Gabriel García Márquez", "Sudamericana", "Realismo mágico", 1967);
-        bibliotecario.registrarLibroFisico(libro1);
+        bibliotecarioPrincipal.registrarLibroFisico(libro1);
         LibroFisico libro2 = new LibroFisico("Don Quijote de la Mancha", "Miguel de Cervantes", "Francisco de Robles", "Novela", 1605);
-        bibliotecario.registrarLibroFisico(libro2);
+        bibliotecarioPrincipal.registrarLibroFisico(libro2);
         LibroFisico libro3 = new LibroFisico("1984", "George Orwell", "Secker & Warburg", "Distopía", 1949);
-        bibliotecario.registrarLibroFisico(libro3);
+        bibliotecarioPrincipal.registrarLibroFisico(libro3);
         LibroFisico libro4 = new LibroFisico("El Principito", "Antoine de Saint-Exupéry", "Reynal & Hitchcock", "Fábula", 1943);
-        bibliotecario.registrarLibroFisico(libro4);
+        bibliotecarioPrincipal.registrarLibroFisico(libro4);
         LibroFisico libro5 = new LibroFisico("La Sombra del Viento", "Carlos Ruiz Zafón", "Planeta", "Misterio", 2001);
-        bibliotecario.registrarLibroFisico(libro5);
+        bibliotecarioPrincipal.registrarLibroFisico(libro5);
 
         LibroDigital libroD1 = new LibroDigital("Aprendiendo Java", "Ana Torres", "TechBooks", "Educativo", 2020, FormatoDigital.PDF, "https://descargas.com/Java2020.pdf");
-        bibliotecario.registrarLibroDigital(libroD1);
+        bibliotecarioPrincipal.registrarLibroDigital(libroD1);
         LibroDigital libroD2 = new LibroDigital("Historia Universal", "Carlos Medina", "HistoriaEd", "Historia", 2018, FormatoDigital.EPUB, "https://descargas.com/Historia2018.epub");
-        bibliotecario.registrarLibroDigital(libroD2);
+        bibliotecarioPrincipal.registrarLibroDigital(libroD2);
         LibroDigital libroD3 = new LibroDigital("Cuentos para dormir", "Lucía Martínez", "Fábulas SA", "Infantil", 2022, FormatoDigital.MOBI, "https://descargas.com/Cuentos2022.mobi");
-        bibliotecario.registrarLibroDigital(libroD3);
+        bibliotecarioPrincipal.registrarLibroDigital(libroD3);
 
         LibroReferencia ref1 = new LibroReferencia("Enciclopedia de Ciencias", "Marcos Díaz", "CienciaPlus", "Ciencia", 2015);
-        bibliotecario.registrarLibroReferencia(ref1);
+        bibliotecarioPrincipal.registrarLibroReferencia(ref1);
         LibroReferencia ref2 = new LibroReferencia("Atlas Mundial", "Laura Méndez", "GeoEditores", "Geografía", 2018);
-        bibliotecario.registrarLibroReferencia(ref2);
+        bibliotecarioPrincipal.registrarLibroReferencia(ref2);
         LibroReferencia ref3 = new LibroReferencia("Diccionario de Lengua Española", "RAE", "Espasa", "Lengua", 2020);
-        bibliotecario.registrarLibroReferencia(ref3);
+        bibliotecarioPrincipal.registrarLibroReferencia(ref3);
 
-       bibliotecario.prestarLibro(libro1,estudiante1,10);
+        bibliotecarioPrincipal.prestarLibro(libro1,estudiante1,10);
 
 
        listUsuarios = FXCollections.observableArrayList(biblioteca.getListUsuarios());
