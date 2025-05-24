@@ -202,7 +202,10 @@ public class PantallaBibliotecarioViewController {
             if (libroEncontrado.isEstaDisponible()) {
                 Reserva reserva = new Reserva(libroEncontrado, usuarioEncontrado, dias, LocalDate.now());
                 listReservas.add(reserva);
+                libroEncontrado.setEstaDisponible(true);
                 bibliotecarioController.prestarLibro(libroEncontrado, usuarioEncontrado, dias);
+
+                refrehLibros();
             }
             else {
                 mostrarError("El Libro no esta disponible.");
@@ -215,10 +218,12 @@ public class PantallaBibliotecarioViewController {
     public void eliminarReserva() {
         listReservas = FXCollections.observableList(listReservas);
         if (tbReservas.getSelectionModel().getSelectedItem() != null) {
+            tbReservas.getSelectionModel().getSelectedItem().getLibro().setEstaDisponible(true);
             bibliotecarioController.devolverLibro(tbReservas.getSelectionModel().getSelectedItem());
             listReservas.remove(tbReservas.getSelectionModel().getSelectedItem());
             tbReservas.getSelectionModel().clearSelection();
             limpiarReserva();
+            refrehLibros();
 
         }
         else {
@@ -418,6 +423,11 @@ public class PantallaBibliotecarioViewController {
         JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
+    public void refrehLibros(){
+        tbLibrosFisicos.refresh();
+        tbLibrosReferencias.refresh();
+        tbLibrosDigitales.refresh();
+    }
 
 
         public void initialize () {
