@@ -190,7 +190,9 @@ public class PantallaBibliotecarioViewController {
                 mostrarError("Ya existe un usuario con esa cédula.");
             } else {
                 Estudiante estudiante = new Estudiante(nombre, cedula, correo, contrasenia,app.getBiblioteca());
-                bibliotecarioController.registrarEstudiante(estudiante);
+                ObservableList<Usuario> lista = FXCollections.observableArrayList(app.getListUsuarios());
+                lista.add(estudiante);
+                app.setListUsuarios(lista);
                 listUsuarios.add(estudiante);
                 mostrarMensaje("Estudiante registrado con exito.");
             }
@@ -223,11 +225,11 @@ public class PantallaBibliotecarioViewController {
             return;
         }
 
-
         Usuario usuarioEncontrado = listUsuarios.stream()
                 .filter(u -> u.getCedula().equalsIgnoreCase(cedula))
                 .findFirst()
                 .orElse(null);
+
         if (usuarioEncontrado == null) {
             mostrarError("No existe un usuario con esa cédula.");
             return;
@@ -237,57 +239,73 @@ public class PantallaBibliotecarioViewController {
                 .filter(l -> l.getTitulo().equalsIgnoreCase(tituloLibro))
                 .findFirst()
                 .orElse(null);
+
         if (libroEncontrado == null) {
             mostrarError("No existe un libro con ese título.");
             return;
         }
+
         if (libroEncontrado.getTipoLibro() == TipoLibro.REFERENCIA) {
             mostrarError("No se puede reservar un libro de tipo Referencia.");
             return;
         }
-        if (usuarioEncontrado.getListReservasUsuario().size() >= usuarioEncontrado.getMaxReservas()){
-            mostrarError("El usuario ya supero el máximo de reservas.");
+
+        if (usuarioEncontrado.getListReservasUsuario().size() >= usuarioEncontrado.getMaxReservas()) {
+            mostrarError("El usuario ya superó el máximo de reservas.");
+            return;
+        }
+
+        if (dias > usuarioEncontrado.getMaxDias()) {
+            mostrarError("El usuario es de tipo " + usuarioEncontrado.getTipoUsuario().toString()
+                    + " y su máximo de tiempo permitido es de " + usuarioEncontrado.getMaxDias() + " días.");
+            return;
+        }
+
+        if (!libroEncontrado.isEstaDisponible()) {
+            mostrarError("El libro no está disponible.");
+            return;
         }
 
         try {
-            if (dias > usuarioEncontrado.getMaxDias()){
-                mostrarError("El usuario es de tipo "+usuarioEncontrado.getTipoUsuario().toString()+" Y su maximo de tiempo permitido es de "+usuarioEncontrado.getMaxDias()+" dias.");
+            Reserva reserva = new Reserva(libroEncontrado, usuarioEncontrado, dias, LocalDate.now());
+            listReservas.add(reserva);
+            libroEncontrado.setEstaDisponible(false);
+            tbReservas.refresh();
 
-            return;}
+            ObservableList<Reserva> lista = FXCollections.observableArrayList(app.getListReservas());
+            lista.add(reserva);
+            app.setListReservas(lista);
 
-            if (libroEncontrado.isEstaDisponible()) {
-                Reserva reserva = new Reserva(libroEncontrado, usuarioEncontrado, dias, LocalDate.now());
-                listReservas.add(reserva);
-                libroEncontrado.setEstaDisponible(true);
-                bibliotecarioController.prestarLibro(libroEncontrado, usuarioEncontrado, dias);
+            usuarioEncontrado.getListReservasUsuario().add(reserva);
 
-                refrehLibros();
-                mostrarMensaje("Reserva creada con Éxito.");
-            } else {
-                mostrarError("El Libro no esta disponible.");
-            }
-
+            refrehLibros();
+            mostrarMensaje("Reserva creada con éxito.");
         } catch (Exception e) {
             mostrarError("Error al agregar la reserva: " + e.getMessage());
         }
     }
 
+
     public void eliminarReserva() {
+
         listReservas = FXCollections.observableList(listReservas);
-        if (tbReservas.getSelectionModel().getSelectedItem() != null) {
-            tbReservas.getSelectionModel().getSelectedItem().getLibro().setEstaDisponible(true);
-            bibliotecarioController.devolverLibro(tbReservas.getSelectionModel().getSelectedItem());
-            listReservas.remove(tbReservas.getSelectionModel().getSelectedItem());
+        Reserva reservaSeleccionada = tbReservas.getSelectionModel().getSelectedItem();
+        if (reservaSeleccionada != null) {
+            reservaSeleccionada.getLibro().setEstaDisponible(true);
+            ObservableList<Reserva> lista = FXCollections.observableArrayList(app.getListReservas());
+            lista.remove(reservaSeleccionada);
+            app.setListReservas(lista);
+            reservaSeleccionada.getUsuario().getListReservasUsuario().remove(reservaSeleccionada);
+            listReservas.remove(reservaSeleccionada);
             tbReservas.getSelectionModel().clearSelection();
             limpiarReserva();
             refrehLibros();
-            mostrarMensaje("Reserva Eliminada con Éxito.");
 
+            mostrarMensaje("Reserva eliminada con éxito.");
         } else {
-            mostrarError("No has Seleccionado ningúna Reserva.");
+            mostrarError("No has seleccionado ninguna reserva.");
         }
     }
-
 
 
 
@@ -307,7 +325,9 @@ public class PantallaBibliotecarioViewController {
                 mostrarError("Ya existe un usuario con esa cédula.");
             } else {
                 Docente docente = new Docente(nombre, cedula, correo, contrasenia,app.getBiblioteca());
-                bibliotecarioController.registrarDocente(docente);
+                ObservableList<Usuario> lista = FXCollections.observableArrayList(app.getListUsuarios());
+                lista.add(docente);
+                app.setListUsuarios(lista);
                 listUsuarios.add(docente);
                 mostrarMensaje("Docente Creado con Éxito.");
             }
@@ -342,7 +362,9 @@ public class PantallaBibliotecarioViewController {
 
 
         LibroDigital libroDigital = new LibroDigital(tituloLibro, autor, "OpenSource", genero, anio, formato, "",disponible);
-        bibliotecarioController.registrarLibroDigital(libroDigital);
+        ObservableList<Libro> lista = FXCollections.observableArrayList(app.getListLibros());
+        lista.add(libroDigital);
+        app.setListLibros(lista);
         listLibrosDigitales.add(libroDigital);
         mostrarMensaje("Libro creado con Éxito.");
 
@@ -372,7 +394,9 @@ public class PantallaBibliotecarioViewController {
 
 
         LibroFisico libroFisico = new LibroFisico(tituloLibro,autor,editorial,genero,anio,disponible);
-        bibliotecarioController.registrarLibroFisico(libroFisico);
+        ObservableList<Libro> lista = FXCollections.observableArrayList(app.getListLibros());
+        lista.add(libroFisico);
+        app.setListLibros(lista);
         listLibrosFisicos.add(libroFisico);
         mostrarMensaje("Libro creado con Éxito.");
 
@@ -401,8 +425,11 @@ public class PantallaBibliotecarioViewController {
         }
 
         LibroReferencia libroReferencia = new LibroReferencia(titulo, autor, editorial, genero, anio);
-        bibliotecarioController.registrarLibroReferencia(libroReferencia);
+        ObservableList<Libro> lista = FXCollections.observableArrayList(app.getListLibros());
+        lista.add(libroReferencia);
+        app.setListLibros(lista);
         listLibrosReferencias.add(libroReferencia);
+
         mostrarMensaje("Libro creado con Éxito.");
 
 
@@ -418,7 +445,9 @@ public class PantallaBibliotecarioViewController {
             }
         }
         if (tbUsuarios.getSelectionModel().getSelectedItem() != null) {
-            bibliotecarioController.eliminarUsuario(tbUsuarios.getSelectionModel().getSelectedItem());
+            ObservableList<Usuario> lista = FXCollections.observableArrayList(app.getListUsuarios());
+            lista.add(tbUsuarios.getSelectionModel().getSelectedItem());
+            app.setListUsuarios(lista);
             listUsuarios.remove(tbUsuarios.getSelectionModel().getSelectedItem());
             tbUsuarios.getSelectionModel().clearSelection();
             limpiarUsuario();
