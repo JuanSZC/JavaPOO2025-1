@@ -297,12 +297,12 @@ public class PantallaAdministradorViewController {
      */
     @FXML
     public void initialize() {
-        Platform.runLater(() -> {
+       {
             tbcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombreCompleto()));
             tbcCedula.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCedula()));
             tbcContrasenia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getContrasenia()));
             tbcTipoTrabajo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipoTrabajo().name()));
             tbEmpleados.setItems(listEmpleados);
-        });
+        };
     }
 }

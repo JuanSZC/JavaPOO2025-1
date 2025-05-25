@@ -303,6 +303,7 @@ public class PantallaBibliotecarioViewController {
 
             usuarioEncontrado.getListReservasUsuario().add(reserva);
 
+
             refrehLibros();
             mostrarMensaje("Reserva creada con éxito.");
         } catch (Exception e) {
