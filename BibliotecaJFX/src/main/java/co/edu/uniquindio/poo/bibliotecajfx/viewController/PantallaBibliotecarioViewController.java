@@ -192,6 +192,7 @@ public class PantallaBibliotecarioViewController {
                 Estudiante estudiante = new Estudiante(nombre, cedula, correo, contrasenia,app.getBiblioteca());
                 bibliotecarioController.registrarEstudiante(estudiante);
                 listUsuarios.add(estudiante);
+                mostrarMensaje("Estudiante registrado con exito.");
             }
         }
     }
@@ -340,7 +341,7 @@ public class PantallaBibliotecarioViewController {
         }
 
 
-        LibroDigital libroDigital = new LibroDigital(tituloLibro, autor, "", genero, anio, formato, "",disponible);
+        LibroDigital libroDigital = new LibroDigital(tituloLibro, autor, "OpenSource", genero, anio, formato, "",disponible);
         bibliotecarioController.registrarLibroDigital(libroDigital);
         listLibrosDigitales.add(libroDigital);
         mostrarMensaje("Libro creado con Éxito.");
@@ -576,6 +577,41 @@ public class PantallaBibliotecarioViewController {
             }
         }
     }
+    public void modificarUsuario() {
+        Usuario seleccionado = tbUsuarios.getSelectionModel().getSelectedItem();
+
+        if (seleccionado == null) {
+            mostrarError("Debe seleccionar un Usuario para modificar.");
+        } else {
+            String nuevoNombre = tfNombreUsuario.getText();
+            String nuevaCedula = tfCedulaUsuario.getText();
+            String nuevoCorreo = tfCorreoUsuario.getText();
+            String nuevaContrasenia = tfContraseniaUsuario.getText();
+
+            if (nuevoNombre.isEmpty() || nuevaCedula.isEmpty() || nuevoCorreo.isEmpty()) {
+                mostrarError("Hay celdas vacías");
+                return;
+            }
+
+            boolean cedulaDuplicada = listUsuarios.stream()
+                    .anyMatch(est -> !est.equals(seleccionado) && est.getCedula().equals(nuevaCedula));
+
+            if (cedulaDuplicada) {
+                mostrarError("Ya existe un usuario con esa cédula..");
+                return;
+            }
+
+            seleccionado.setNombreCompleto(nuevoNombre);
+            seleccionado.setCedula(nuevaCedula);
+            seleccionado.setCorreo(nuevoCorreo);
+            seleccionado.setContrasenia(nuevaContrasenia);
+
+            tbUsuarios.refresh();
+            tbUsuarios.getSelectionModel().clearSelection();
+            mostrarMensaje("Usuario modificado con Éxito.");
+
+        }
+    }
 
     public void obtenerInformacionLibroFisico() {
         if (tbLibrosFisicos.getSelectionModel().getSelectedItem() != null) {
@@ -753,41 +789,6 @@ public class PantallaBibliotecarioViewController {
 
 
 
-    public void modificarUsuario() {
-        Usuario seleccionado = tbUsuarios.getSelectionModel().getSelectedItem();
-
-        if (seleccionado == null) {
-            mostrarError("Debe seleccionar un Usuario para modificar.");
-        } else {
-            String nuevoNombre = tfNombreUsuario.getText();
-            String nuevaCedula = tfCedulaUsuario.getText();
-            String nuevoCorreo = tfCorreoUsuario.getText();
-            String nuevaContrasenia = tfContraseniaUsuario.getText();
-
-            if (nuevoNombre.isEmpty() || nuevaCedula.isEmpty() || nuevoCorreo.isEmpty()) {
-                mostrarError("Hay celdas vacías");
-                return;
-            }
-
-            boolean cedulaDuplicada = listUsuarios.stream()
-                    .anyMatch(est -> !est.equals(seleccionado) && est.getCedula().equals(nuevaCedula));
-
-            if (cedulaDuplicada) {
-                mostrarError("Ya existe un usuario con esa cédula..");
-                return;
-            }
-
-            seleccionado.setNombreCompleto(nuevoNombre);
-            seleccionado.setCedula(nuevaCedula);
-            seleccionado.setCorreo(nuevoCorreo);
-            seleccionado.setContrasenia(nuevaContrasenia);
-
-            tbUsuarios.refresh();
-            tbUsuarios.getSelectionModel().clearSelection();
-            mostrarMensaje("Usuario modificado con Éxito.");
-
-        }
-    }
 
 
     public void setListReservas(ObservableList<Reserva> listReservas) {

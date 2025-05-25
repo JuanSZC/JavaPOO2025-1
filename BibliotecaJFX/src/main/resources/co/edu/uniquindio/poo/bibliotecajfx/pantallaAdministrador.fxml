@@ -15,73 +15,54 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaAdministradorViewController">
    <children>
-      <TabPane prefHeight="645.0" prefWidth="1055.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="759.0" prefWidth="1262.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Gestion de Empleados">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Tab text="Gestion de Usuarios">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9a2707" height="115.0" layoutX="545.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
-                        <Text fill="WHITE" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de Empleados">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="164.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d74636" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#85110c" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestión de Empleados">
                            <font>
                               <Font name="System Bold" size="37.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="727.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRADOR">
+                        <Text fill="WHITE" layoutX="934.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRADOR">
                            <font>
                               <Font name="System Bold" size="37.0" />
                            </font>
                         </Text>
-                        <TableView fx:id="tbGestionEmpleados" layoutY="162.0" prefHeight="457.0" prefWidth="713.0">
-                          <columns>
-                            <TableColumn fx:id="tbcolNombre" prefWidth="195.0" text="Nombre" />
-                            <TableColumn fx:id="tbcolCedula" prefWidth="136.0" text="Cedula" />
-                              <TableColumn fx:id="tbcolContrasenia" prefWidth="171.0" text="Contraseña" />
-                              <TableColumn fx:id="tbcolTipoTrabajo" prefWidth="210.0" text="Tipo de Trabajo" />
-                          </columns>
+                        <TableView fx:id="tbEmpleados" layoutY="162.0" prefHeight="571.0" prefWidth="917.0">
+                           <columns>
+                              <TableColumn fx:id="tbcNombre" prefWidth="335.0" text="Nombre" />
+                              <TableColumn fx:id="tbcCedula" prefWidth="156.0" text="Cedula" />
+                              <TableColumn fx:id="tbcContrasenia" prefWidth="246.0" text="Contraseña" />
+                              <TableColumn fx:id="tbcTipoTrabajo" minWidth="0.0" prefWidth="179.0" text="Tipo de Trabajo" />
+                           </columns>
                         </TableView>
-                        <TextField fx:id="fiNombre" layoutX="785.0" layoutY="255.0" prefHeight="25.0" prefWidth="255.0" />
-                        <Text layoutX="723.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
-                        <TextField fx:id="fiCedula" layoutX="787.0" layoutY="308.0" prefHeight="25.0" prefWidth="253.0" />
-                        <Text layoutX="723.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" />
-                        <TextField fx:id="fiContrasenia" layoutX="789.0" layoutY="359.0" prefHeight="25.0" prefWidth="251.0" />
-                        <Text layoutX="720.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
-                        <Text layoutX="814.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información:">
+                        <TextField fx:id="tfNombre" layoutX="992.0" layoutY="239.0" prefHeight="25.0" prefWidth="255.0" />
+                        <Text layoutX="930.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" />
+                        <TextField fx:id="tfCedula" layoutX="994.0" layoutY="292.0" prefHeight="25.0" prefWidth="253.0" />
+                        <Text layoutX="930.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" />
+                        <TextField fx:id="tfContrasenia" layoutX="996.0" layoutY="343.0" prefHeight="25.0" prefWidth="251.0" />
+                        <Text layoutX="927.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:" />
+                        <Text layoutX="1022.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información:">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Text>
-                        <Button fx:id="btEliminarEmpleado" layoutX="725.0" layoutY="419.0" mnemonicParsing="false" text="Eliminar Empleado" />
-                        <Button fx:id="bt_modificarEmpleado" layoutX="918.0" layoutY="419.0" mnemonicParsing="false" text="Modificar Empleado" />
-                        <MenuButton fx:id="spbtAgregarEmpleado" layoutX="818.0" layoutY="464.0" mnemonicParsing="false" text="Agregar Empleado">
-                          <items>
-                            <MenuItem id="btAgregarBibliotecario" fx:id="btAg" mnemonicParsing="false" text="Agregar Bibliotecario" />
-                            <MenuItem id="btAgregarAdministrador" mnemonicParsing="false" text="Agregar Administrador" />
-                          </items>
+                        <Button layoutX="938.0" layoutY="423.0" mnemonicParsing="false" onAction="#eliminarEmpleado" text="Eliminar Empleado" />
+                        <Button layoutX="1137.0" layoutY="423.0" mnemonicParsing="false" onAction="#modificarEmpleado" text="Modificar Empleado" />
+                        <MenuButton layoutX="1032.0" layoutY="465.0" mnemonicParsing="false" text="Agregar Empleado">
+                           <items>
+                              <MenuItem mnemonicParsing="false" onAction="#agregarAdministrador" text="Agregar Administrador" />
+                              <MenuItem mnemonicParsing="false" onAction="#agregarBibliotecario" text="Agregar Bibliotecario" />
+                           </items>
                         </MenuButton>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            <Tab text="Generar Informe">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff2121" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9a2707" height="115.0" layoutX="545.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
-                        <Text fill="WHITE" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generar Informe">
-                           <font>
-                              <Font name="System Bold" size="37.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="727.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRADOR">
-                           <font>
-                              <Font name="System Bold" size="37.0" />
-                           </font>
-                        </Text>
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
+                        <Button layoutX="1063.0" layoutY="550.0" mnemonicParsing="false" onAction="#limpiarEmpleado" text="Limpiar" />
                      </children>
                   </AnchorPane>
                </content>

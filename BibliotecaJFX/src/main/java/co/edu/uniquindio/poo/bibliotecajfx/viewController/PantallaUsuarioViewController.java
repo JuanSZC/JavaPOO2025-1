@@ -130,9 +130,11 @@ public class PantallaUsuarioViewController {
             Reserva reserva = new Reserva(libroSeleccionado,usuarioSesion,tiempo, LocalDate.now());
 
             app.getListReservas().add(reserva);
-
+            usuarioSesion.getListReservasUsuario().add(reserva);
+            listReservas.add(reserva);
             libroSeleccionado.setEstaDisponible(false);
             tbLibros.refresh();
+            tbReservas.refresh();
             mostrarMensaje("El libro ha sido reservado con éxito.");
             System.out.println(usuarioSesion.getMaxReservas()+"--"+usuarioSesion.getListReservasUsuario().size());
         }

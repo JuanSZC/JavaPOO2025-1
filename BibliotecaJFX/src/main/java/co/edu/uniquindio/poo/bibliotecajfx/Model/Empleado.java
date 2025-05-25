@@ -63,7 +63,7 @@ public class Empleado {
                 ", cedula=" + cedula +
                 ", Contrasenia='" + Contrasenia + '\'' +
                 ", tipoTrabajo=" + tipoTrabajo +
-                ", biblioteca=" + biblioteca +
+                ", biblioteca=" + biblioteca.getNombre() +
                 '}';
     }
 }

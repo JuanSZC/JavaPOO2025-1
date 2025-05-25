@@ -146,7 +146,7 @@ public class App extends Application {
 
             PantallaAdministradorViewController controlador = loader.getController();
             controlador.setApp(this);
-
+            controlador.setListEmpleado(listEmpleados);
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
             stage.setResizable(false);
@@ -227,6 +227,7 @@ public class App extends Application {
 
             PantallaVisitanteViewController controlador = loader.getController();
             controlador.setApp(this);
+            controlador.setListLibros(this.listLibros);
 
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
@@ -247,6 +248,37 @@ public class App extends Application {
     public void inicializarData() {
         administradorPrincipal.agregarAdministrador(administradorPrincipal);
         administradorPrincipal.agregarBibliotecario(bibliotecarioPrincipal);
+
+
+        Bibliotecario bibliotecario1 = new Bibliotecario("Samuel Stiven Cuervo","1145731491","20141714",biblioteca);
+        administradorPrincipal.agregarBibliotecario(bibliotecario1);
+        Administrador administrador1 = new Administrador("Jose Roca","987654","Perro123",biblioteca);
+        administradorPrincipal.agregarAdministrador(administrador1);
+
+        Bibliotecario bibliotecario2 = new Bibliotecario("Laura Martinez","1122334455","clave1",biblioteca);
+        Bibliotecario bibliotecario3 = new Bibliotecario("Carlos Ramirez","2233445566","clave2",biblioteca);
+        Bibliotecario bibliotecario4 = new Bibliotecario("Sofia Lopez","3344556677","clave3",biblioteca);
+        Bibliotecario bibliotecario5 = new Bibliotecario("Andres Gomez","4455667788","clave4",biblioteca);
+        Bibliotecario bibliotecario6 = new Bibliotecario("Daniela Torres","5566778899","clave5",biblioteca);
+        Bibliotecario bibliotecario7 = new Bibliotecario("Julian Moreno","6677889900","clave6",biblioteca);
+
+        administradorPrincipal.agregarBibliotecario(bibliotecario2);
+        administradorPrincipal.agregarBibliotecario(bibliotecario3);
+        administradorPrincipal.agregarBibliotecario(bibliotecario4);
+        administradorPrincipal.agregarBibliotecario(bibliotecario5);
+        administradorPrincipal.agregarBibliotecario(bibliotecario6);
+        administradorPrincipal.agregarBibliotecario(bibliotecario7);
+
+        Administrador administrador2 = new Administrador("Lucia Vega","11221122","admin1",biblioteca);
+        Administrador administrador3 = new Administrador("Miguel Pineda","22112211","admin2",biblioteca);
+        Administrador administrador4 = new Administrador("Ana Guzman","33113311","admin3",biblioteca);
+        Administrador administrador5 = new Administrador("Ricardo Nuñez","44114411","admin4",biblioteca);
+
+        administradorPrincipal.agregarAdministrador(administrador2);
+        administradorPrincipal.agregarAdministrador(administrador3);
+        administradorPrincipal.agregarAdministrador(administrador4);
+        administradorPrincipal.agregarAdministrador(administrador5);
+
 
 
         Estudiante estudiante1 = new Estudiante("Ana Gómez", "123456", "ana@gemail.com", "pass123",biblioteca);
@@ -291,49 +323,34 @@ public class App extends Application {
 
         LibroFisico libro6 = new LibroFisico("Crónica de una muerte anunciada", "Gabriel García Márquez", "Oveja Negra", "Novela corta", 1981, false);
         bibliotecarioPrincipal.registrarLibroFisico(libro6);
-
         LibroFisico libro7 = new LibroFisico("Rayuela", "Julio Cortázar", "Sudamericana", "Narrativa", 1963, true);
         bibliotecarioPrincipal.registrarLibroFisico(libro7);
-
         LibroFisico libro8 = new LibroFisico("Ficciones", "Jorge Luis Borges", "Sur", "Cuento", 1944, true);
         bibliotecarioPrincipal.registrarLibroFisico(libro8);
-
         LibroFisico libro9 = new LibroFisico("Pedro Páramo", "Juan Rulfo", "Fondo de Cultura Económica", "Novela", 1955, true);
         bibliotecarioPrincipal.registrarLibroFisico(libro9);
-
         LibroFisico libro10 = new LibroFisico("Los detectives salvajes", "Roberto Bolaño", "Anagrama", "Ficción", 1998, true);
         bibliotecarioPrincipal.registrarLibroFisico(libro10);
-
         LibroDigital libroD4 = new LibroDigital("Inteligencia Artificial", "María Gómez", "TechToday", "Tecnología", 2021, FormatoDigital.PDF, "https://descargas.com/IA2021.pdf", true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD4);
-
         LibroDigital libroD5 = new LibroDigital("Economía para todos", "Luis Ramírez", "EconEdit", "Educativo", 2019, FormatoDigital.EPUB, "https://descargas.com/Economia2019.epub", true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD5);
-
         LibroDigital libroD6 = new LibroDigital("Programación Web", "Laura Pérez", "CodeBooks", "Tecnología", 2022, FormatoDigital.MOBI, "https://descargas.com/Web2022.mobi", true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD6);
-
         LibroDigital libroD7 = new LibroDigital("Psicología básica", "Iván Torres", "CienciaEd", "Ciencia", 2017, FormatoDigital.PDF, "https://descargas.com/Psicologia2017.pdf", true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD7);
-
         LibroDigital libroD8 = new LibroDigital("Guía de Fotografía", "Andrea Ruiz", "ArteVisual", "Arte", 2016, FormatoDigital.EPUB, "https://descargas.com/Fotografia2016.epub", true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD8);
-
         LibroFisico libro11 = new LibroFisico("Ensayo sobre la ceguera", "José Saramago", "Alfaguara", "Ficción", 1995, true);
         bibliotecarioPrincipal.registrarLibroFisico(libro11);
-
         LibroFisico libro12 = new LibroFisico("El túnel", "Ernesto Sabato", "Sur", "Novela", 1948, true);
         bibliotecarioPrincipal.registrarLibroFisico(libro12);
-
         LibroFisico libro13 = new LibroFisico("La ciudad y los perros", "Mario Vargas Llosa", "Seix Barral", "Drama", 1963, true);
         bibliotecarioPrincipal.registrarLibroFisico(libro13);
-
         LibroDigital libroD9 = new LibroDigital("Viajes interplanetarios", "Tomás Delgado", "FuturoPress", "Ciencia ficción", 2023, FormatoDigital.MOBI, "https://descargas.com/Viajes2023.mobi", true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD9);
-
         LibroDigital libroD10 = new LibroDigital("Manual de cocina saludable", "Paula Castaño", "NutriBooks", "Gastronomía", 2020, FormatoDigital.PDF, "https://descargas.com/Cocina2020.pdf", true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD10);
-
         LibroReferencia ref1 = new LibroReferencia("Enciclopedia de Ciencias", "Marcos Díaz", "CienciaPlus", "Ciencia", 2015);
         bibliotecarioPrincipal.registrarLibroReferencia(ref1);
         LibroReferencia ref2 = new LibroReferencia("Atlas Mundial", "Laura Méndez", "GeoEditores", "Geografía", 2018);
@@ -343,7 +360,6 @@ public class App extends Application {
 
         Reserva reseva1 = new Reserva(libro3,estudiante1,5, LocalDate.of(2025,5,24));
         biblioteca.getListReservas().add(reseva1);
-
         estudiante1.getListReservasUsuario().add(reseva1);
         Reserva reseva2= new Reserva(libro5,estudiante2,2, LocalDate.of(2025,5,23));
         biblioteca.getListReservas().add(reseva2);

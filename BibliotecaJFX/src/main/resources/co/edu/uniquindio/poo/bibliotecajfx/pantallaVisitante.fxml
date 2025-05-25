@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -10,26 +12,36 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaVisitanteViewController">
    <children>
-      <TabPane prefHeight="645.0" prefWidth="1055.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="759.0" prefWidth="1262.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="Libros">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#525454" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="115.0" layoutX="545.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
-                        <Text fill="WHITE" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libros">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="164.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#303032" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libros">
                            <font>
                               <Font name="System Bold" size="37.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="853.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VISITANTE">
+                        <Text fill="WHITE" layoutX="1060.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VISITANTE">
                            <font>
                               <Font name="System Bold" size="37.0" />
                            </font>
                         </Text>
-                        <Button id="btCerrarSesion" layoutX="967.0" layoutY="590.0" mnemonicParsing="false" onAction="#openPantallaBienvenida" text="Cerrar Sesion" />
+                        <TableView fx:id="tbLibros" layoutY="162.0" prefHeight="542.0" prefWidth="1262.0">
+                           <columns>
+                              <TableColumn fx:id="tbcTitulo" prefWidth="275.0" text="Titulo" />
+                              <TableColumn fx:id="tbcAutor" prefWidth="213.0" text="Autor" />
+                              <TableColumn fx:id="tbcEditorial" prefWidth="203.0" text="Editorial" />
+                              <TableColumn fx:id="tbcGenero" minWidth="0.0" prefWidth="235.0" text="Género" />
+                              <TableColumn fx:id="tbcTipoLibro" prefWidth="185.0" text="Tipo de Libro" />
+                              <TableColumn fx:id="tbcAnio" prefWidth="150.0" text="Año" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
                      </children>
                   </AnchorPane>
                </content>
