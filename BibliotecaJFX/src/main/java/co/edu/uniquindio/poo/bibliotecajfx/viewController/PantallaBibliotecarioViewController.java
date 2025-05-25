@@ -189,7 +189,7 @@ public class PantallaBibliotecarioViewController {
             if (cedulaExistente) {
                 mostrarError("Ya existe un usuario con esa cédula.");
             } else {
-                Estudiante estudiante = new Estudiante(nombre, cedula, correo, contrasenia);
+                Estudiante estudiante = new Estudiante(nombre, cedula, correo, contrasenia,app.getBiblioteca());
                 bibliotecarioController.registrarEstudiante(estudiante);
                 listUsuarios.add(estudiante);
             }
@@ -302,7 +302,7 @@ public class PantallaBibliotecarioViewController {
             if (cedulaExistente) {
                 mostrarError("Ya existe un usuario con esa cédula.");
             } else {
-                Docente docente = new Docente(nombre, cedula, correo, contrasenia);
+                Docente docente = new Docente(nombre, cedula, correo, contrasenia,app.getBiblioteca());
                 bibliotecarioController.registrarDocente(docente);
                 listUsuarios.add(docente);
                 mostrarMensaje("Docente Creado con Éxito.");
@@ -407,7 +407,12 @@ public class PantallaBibliotecarioViewController {
 
 
     public void eliminarUsuario() {
-        listLibros = FXCollections.observableList(listLibros);
+        for (Reserva reserva : app.getListReservas()) {
+            if (reserva.getUsuario().equals(tbUsuarios.getSelectionModel().getSelectedItem())) {
+                mostrarError("No se puede eliminar el usuario, debido a que tiene libros reservados.");
+                return;
+            }
+        }
         if (tbUsuarios.getSelectionModel().getSelectedItem() != null) {
             bibliotecarioController.eliminarUsuario(tbUsuarios.getSelectionModel().getSelectedItem());
             listUsuarios.remove(tbUsuarios.getSelectionModel().getSelectedItem());
@@ -421,43 +426,75 @@ public class PantallaBibliotecarioViewController {
     }
 
     public void eliminarLibroDigital() {
-        if (tbLibrosDigitales.getSelectionModel().getSelectedItem() != null) {
-            bibliotecarioController.eliminarLibro(tbLibrosDigitales.getSelectionModel().getSelectedItem());
-            listLibrosDigitales.remove(tbLibrosDigitales.getSelectionModel().getSelectedItem());
+        Libro libroSeleccionado = tbLibrosDigitales.getSelectionModel().getSelectedItem();
+        for (Reserva reserva : app.getListReservas()) {
+            if (reserva.getLibro().equals(libroSeleccionado)) {
+                mostrarError("El libro se encuentra Reservado.");
+                return;
+            }
+
+        }
+
+
+        if (libroSeleccionado != null) {
+            bibliotecarioController.eliminarLibro(libroSeleccionado);
+            listLibrosDigitales.remove(libroSeleccionado);
+            app.getListLibros().remove(libroSeleccionado);
+
             tbLibrosDigitales.getSelectionModel().clearSelection();
-            mostrarMensaje("Libro Eliminado con Éxito.");
-
-
-
+            mostrarMensaje("Libro eliminado con éxito.");
         } else {
-            mostrarError("No has Seleccionado ningún Libro.");
+            mostrarError("No has seleccionado ningún libro.");
         }
     }
 
     public void eliminarLibroReferencia() {
-        if (tbLibrosReferencias.getSelectionModel().getSelectedItem() != null) {
-            bibliotecarioController.eliminarLibro(tbLibrosReferencias.getSelectionModel().getSelectedItem());
-            listLibrosReferencias.remove(tbLibrosReferencias.getSelectionModel().getSelectedItem());
-            tbLibrosReferencias.getSelectionModel().clearSelection();
+        Libro libroSeleccionado = tbLibrosReferencias.getSelectionModel().getSelectedItem();
+        for (Reserva reserva : app.getListReservas()) {
+            if (reserva.getLibro().equals(libroSeleccionado)) {
+                mostrarError("El libro se encuentra Reservado.");
+                return;
+            }
 
-            mostrarMensaje("Libro Eliminado con Éxito.");
+        }
+        if (libroSeleccionado != null) {
+            bibliotecarioController.eliminarLibro(libroSeleccionado);
+            listLibrosReferencias.remove(libroSeleccionado);
+
+            ObservableList<Libro> lista = FXCollections.observableArrayList(app.getListLibros());
+            lista.remove(libroSeleccionado);
+            app.setListLibros(lista);
+
+            tbLibrosReferencias.getSelectionModel().clearSelection();
+            mostrarMensaje("Libro eliminado con éxito.");
         } else {
             mostrarError("No has seleccionado ningún libro.");
         }
     }
 
     public void eliminarLibroFisico() {
-        if (tbLibrosFisicos.getSelectionModel().getSelectedItem() != null) {
-            bibliotecarioController.eliminarLibro(tbLibrosFisicos.getSelectionModel().getSelectedItem());
-            listLibrosFisicos.remove(tbLibrosFisicos.getSelectionModel().getSelectedItem());
-            tbLibrosFisicos.getSelectionModel().clearSelection();
+        Libro libroSeleccionado = tbLibrosFisicos.getSelectionModel().getSelectedItem();
+        for (Reserva reserva : app.getListReservas()) {
+            if (reserva.getLibro().equals(libroSeleccionado)) {
+                mostrarError("El libro se encuentra Reservado.");
+                return;
+            }
 
-            mostrarMensaje("Libro Eliminado con Éxito.");
+        }
+        if (libroSeleccionado != null) {
+            bibliotecarioController.eliminarLibro(libroSeleccionado);
+            listLibrosFisicos.remove(libroSeleccionado);
+
+            ObservableList<Libro> lista = FXCollections.observableArrayList(app.getListLibros());
+            lista.remove(libroSeleccionado);
+            app.setListLibros(lista);
+
+            tbLibrosFisicos.getSelectionModel().clearSelection();
+            mostrarMensaje("Libro eliminado con éxito.");
         } else {
             mostrarError("No has seleccionado ningún libro.");
         }
     }
-
 
 
     public void obtenerInformacionUsuario() {
@@ -877,6 +914,8 @@ public class PantallaBibliotecarioViewController {
 
 
     }
+
+
 
 
 

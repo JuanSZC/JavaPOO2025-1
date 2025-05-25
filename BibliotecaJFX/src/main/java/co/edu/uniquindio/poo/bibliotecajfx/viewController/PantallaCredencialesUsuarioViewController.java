@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class PantallaCredencialesUsuarioViewController {
     App app;
@@ -21,6 +22,7 @@ public class PantallaCredencialesUsuarioViewController {
     private PasswordField pfContrasenia;
 
 
+
     public void setApp(App app) {
         this.app = app;
     }
@@ -31,9 +33,10 @@ public class PantallaCredencialesUsuarioViewController {
         String contrasenia = pfContrasenia.getText();
 
         if (administradorController.validadCredencialesUsuario(cedula, contrasenia)) {
-            app.setUsuarioSesion(administradorController.obtenerUsuario(cedula));
+            Usuario usuaio = administradorController.obtenerUsuario(cedula);
+            app.setUsuarioSesion(usuaio);
             openPantallaUsuario(administradorController.obtenerUsuario(cedula));
-            System.out.println("Usuario"+administradorController.obtenerUsuario(cedula)+ " se iniciado");
+
         }
         return null;
     }

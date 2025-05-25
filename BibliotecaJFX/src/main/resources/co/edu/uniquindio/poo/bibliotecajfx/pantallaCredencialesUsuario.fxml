@@ -24,7 +24,8 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="tfCedula" layoutX="193.0" layoutY="199.0" prefHeight="25.0" prefWidth="232.0" />
+            <TextField fx:id="tfCedula" layoutX="193.0" layoutY="199.0" prefHeight="25.0" prefWidth="232.0" text="123456" />
+            <PasswordField fx:id="pfContrasenia" layoutX="193.0" layoutY="283.0" prefHeight="25.0" prefWidth="232.0" text="pass123" />
             <Text layoutX="100.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" textAlignment="CENTER" wrappingWidth="419.0">
                <font>
                   <Font size="20.0" />
@@ -36,7 +37,6 @@
                </font>
             </Text>
             <Button fx:id="btIniciarSesion" layoutX="266.0" layoutY="353.0" mnemonicParsing="false" onAction="#iniciarSesionUsuario" text="Iniciar Sesión" />
-            <PasswordField fx:id="pfContrasenia" layoutX="193.0" layoutY="283.0" prefHeight="25.0" prefWidth="232.0" />
             <Button layoutX="4.0" layoutY="371.0" mnemonicParsing="false" onAction="#openPantallaBienvenida" text="Cancelar" />
          </children>
       </AnchorPane>

@@ -10,11 +10,14 @@ public class Usuario {
     private String correo;
     private String contrasenia;
     private TipoUsuario tipoUsuario;
-    int MaxDias;
+    private int MaxDias;
+    private int MaxReservas;
+    private Biblioteca biblioteca;
+
 
     private List<Reserva> listReservasUsuario;
 
-    public Usuario(String nombreCompleto, String cedula, String correo, String contrasenia, TipoUsuario tipoUsuario,int MaxDias) {
+    public Usuario(String nombreCompleto, String cedula, String correo, String contrasenia, TipoUsuario tipoUsuario,int MaxDias, int MaxReservas, Biblioteca biblioteca) {
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;
         this.correo = correo;
@@ -22,11 +25,15 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
         this.listReservasUsuario = new ArrayList<>();
         this.MaxDias = MaxDias;
+        this.MaxReservas = MaxReservas;
+        this.biblioteca = biblioteca;
     }
 
 public void solicitarPrestamoLibro(Libro libro, int dias){
         LocalDate fecha = LocalDate.now();
         Reserva reserva = new Reserva(libro,this,dias,fecha);
+        this.listReservasUsuario.add(reserva);
+        this.biblioteca.getListReservas().add(reserva);
 }
 
 
@@ -36,6 +43,22 @@ public void solicitarPrestamoLibro(Libro libro, int dias){
 
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
+    }
+
+    public int getMaxReservas() {
+        return MaxReservas;
+    }
+
+    public void setMaxReservas(int maxReservas) {
+        MaxReservas = maxReservas;
+    }
+
+    public Biblioteca getBiblioteca() {
+        return biblioteca;
+    }
+
+    public void setBiblioteca(Biblioteca biblioteca) {
+        this.biblioteca = biblioteca;
     }
 
     public String getCedula() {
