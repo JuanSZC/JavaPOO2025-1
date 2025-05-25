@@ -121,7 +121,6 @@ public class PantallaBibliotecarioViewController {
     ComboBox<FormatoDigital> cbFormato;
 
 
-
     @FXML
     TableView<Libro> tbLibrosReferencias;
     @FXML
@@ -340,7 +339,6 @@ public class PantallaBibliotecarioViewController {
     }
 
 
-
     public void agregarDocente() {
         String nombre = tfNombreUsuario.getText();
         String cedula = tfCedulaUsuario.getText();
@@ -438,7 +436,6 @@ public class PantallaBibliotecarioViewController {
     }
 
 
-
     public void agregarLibroReferencia() {
         String titulo = tfTituloReferencia.getText();
         String autor = tfAutorReferencia.getText();
@@ -470,7 +467,6 @@ public class PantallaBibliotecarioViewController {
 
 
     }
-
 
 
     public void eliminarUsuario() {
@@ -621,6 +617,7 @@ public class PantallaBibliotecarioViewController {
             }
         }
     }
+
     public void obtenerInformacionLibroReferencia() {
         if (tbLibrosReferencias.getSelectionModel().getSelectedItem() != null) {
             Libro libro = tbLibrosReferencias.getSelectionModel().getSelectedItem();
@@ -642,6 +639,7 @@ public class PantallaBibliotecarioViewController {
             }
         }
     }
+
     public void modificarUsuario() {
         Usuario seleccionado = tbUsuarios.getSelectionModel().getSelectedItem();
 
@@ -744,8 +742,6 @@ public class PantallaBibliotecarioViewController {
             mostrarError("Seleccione un libro de referencia para modificar.");
         }
     }
-
-
 
 
     public void modificarLibroDigital() {
@@ -852,10 +848,6 @@ public class PantallaBibliotecarioViewController {
     }
 
 
-
-
-
-
     public void setListReservas(ObservableList<Reserva> listReservas) {
         this.listReservas = listReservas;
         if (tbReservas != null) {
@@ -926,6 +918,7 @@ public class PantallaBibliotecarioViewController {
         tfTiempoReserva.clear();
 
     }
+
     public void limpiarLibroFisico() {
         tbLibrosFisicos.getSelectionModel().clearSelection();
 
@@ -936,6 +929,7 @@ public class PantallaBibliotecarioViewController {
         tfAnioFisico.clear();
         chbDisponibleFisico.setSelected(false);
     }
+
     public void limpiarLibroDigital() {
         tbLibrosDigitales.getSelectionModel().clearSelection();
 
@@ -946,6 +940,7 @@ public class PantallaBibliotecarioViewController {
         chbDisponibleDigital.setSelected(false);
         cbFormato.getSelectionModel().clearSelection();
     }
+
     public void limpiarLibroReferencia() {
         tbLibrosReferencias.getSelectionModel().clearSelection();
 
@@ -957,7 +952,6 @@ public class PantallaBibliotecarioViewController {
     }
 
 
-
     public void cerrarSesion() {
         app.openPantallaBienvenida();
     }
@@ -965,6 +959,7 @@ public class PantallaBibliotecarioViewController {
     public void mostrarError(String error) {
         JOptionPane.showMessageDialog(null, error, "Error", JOptionPane.ERROR_MESSAGE);
     }
+
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "Información", JOptionPane.INFORMATION_MESSAGE);
 
@@ -1058,9 +1053,6 @@ public class PantallaBibliotecarioViewController {
             pieChart.layout();
         });
     }
-
-
-
 
 
     public void initialize() {
