@@ -2,18 +2,21 @@ package co.edu.uniquindio.poo.bibliotecajfx.viewController;
 
 import co.edu.uniquindio.poo.bibliotecajfx.App;
 import co.edu.uniquindio.poo.bibliotecajfx.Controller.AdministradorController;
-import co.edu.uniquindio.poo.bibliotecajfx.Model.Administrador;
-import co.edu.uniquindio.poo.bibliotecajfx.Model.Bibliotecario;
-import co.edu.uniquindio.poo.bibliotecajfx.Model.Empleado;
+import co.edu.uniquindio.poo.bibliotecajfx.Model.*;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import javax.swing.*;
+import java.util.Set;
 
 public class PantallaAdministradorViewController {
 
@@ -36,6 +39,10 @@ public class PantallaAdministradorViewController {
     TextField tfCedula;
     @FXML
     TextField tfContrasenia;
+    @FXML
+    PieChart pcEmpleados;
+    @FXML
+    Text txtInforme;
 
 
     public void setListEmpleado(ObservableList<Empleado> listEmpleado) {
@@ -187,6 +194,62 @@ public class PantallaAdministradorViewController {
         tfContrasenia.clear();
 
     }
+
+    public void cargarGraficas() {
+
+
+        pcEmpleados.setTitle("Proporción de empleados");
+
+        ObservableList<Empleado> lista = FXCollections.observableArrayList(listEmpleados);
+
+        double  bibliotecarios = 0.0;
+        double administradores = 0.0;
+
+        for (Empleado emp : lista) {
+            if (emp.getTipoTrabajo().equals(TipoTrabajo.ADMINISTRADOR)) {
+                administradores++;
+            }
+            else if (emp.getTipoTrabajo().equals(TipoTrabajo.BIBLIOTECARIO)) {
+                bibliotecarios++;
+            }
+        }
+
+        pcEmpleados.getData().addAll(
+                new PieChart.Data("Administradores", administradores),
+                new PieChart.Data("Bibliotecarios", bibliotecarios)
+        );
+
+
+        txtInforme.setText(
+                "Cantidad de Empleados: " + listEmpleados.size()+"\n"+
+                "Administradores: " + Math.round(administradores)+"\n"+
+                "Bibliotecarios: " + Math.round(bibliotecarios));
+    }
+
+    public void eliminarGrafica() {
+        if (pcEmpleados != null) {
+            pcEmpleados.getData().clear();
+            pcEmpleados.setTitle("");
+            pcEmpleados.setLegendVisible(false);
+            ocultarLabels(pcEmpleados);
+
+        }
+    }
+
+    private void ocultarLabels(PieChart pieChart) {
+        Platform.runLater(() -> {
+            Set<Node> labels = pieChart.lookupAll(".chart-pie-label");
+            for (Node label : labels) {
+                label.setVisible(false);
+                label.setManaged(false);
+                label.setMouseTransparent(true);
+            }
+            pieChart.requestLayout();
+            pieChart.layout();
+        });
+    }
+
+
 
 
 

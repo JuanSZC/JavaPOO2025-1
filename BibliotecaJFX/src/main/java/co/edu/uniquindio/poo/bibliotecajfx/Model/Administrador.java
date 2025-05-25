@@ -77,7 +77,8 @@ public class Administrador extends Empleado{
 
 
     public String generarInformeAvanzado() {
-        return "";
+        return "INFORME DE ADMINISTRADOR:\n"+
+                "Cantidad de Empleados: "+this.getBiblioteca().getListEmpleados().size();
     }
 
 }

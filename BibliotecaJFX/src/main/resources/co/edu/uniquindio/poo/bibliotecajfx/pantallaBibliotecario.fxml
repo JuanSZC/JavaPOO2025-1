@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -20,7 +21,7 @@
    <children>
       <TabPane prefHeight="759.0" prefWidth="1262.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Gestion de Usuarios">
+            <Tab onSelectionChanged="#eliminarGraficas" text="Gestion de Usuarios">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -73,7 +74,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Gestion de Libros">
+            <Tab onSelectionChanged="#eliminarGraficas" text="Gestion de Libros">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -210,7 +211,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Gestion de Reservas">
+            <Tab onSelectionChanged="#eliminarGraficas" text="Gestion de Reservas">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -252,6 +253,42 @@
                         <TextField fx:id="tfUsuarioReserva" layoutX="1090.0" layoutY="268.0" prefHeight="25.0" prefWidth="163.0" />
                         <TextField fx:id="tfTiempoReserva" layoutX="1172.0" layoutY="353.0" prefHeight="25.0" prefWidth="80.0" />
                         <Button fx:id="btEliminarUsuario11" layoutX="1070.0" layoutY="527.0" mnemonicParsing="false" onAction="#limpiarReserva" text="Limpiar" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab onSelectionChanged="#cargarGraficas" text="Informe">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="164.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6db532" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1b860c" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informe">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="983.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BIBLIOTECARIO">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
+                        <Accordion layoutX="983.0" layoutY="576.0" />
+                        <PieChart fx:id="pcLibros" layoutX="464.0" layoutY="178.0" prefHeight="363.0" prefWidth="369.0" />
+                        <Text fx:id="txtInforme" layoutX="14.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de Informe" wrappingWidth="1173.13671875">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <PieChart fx:id="pcReservas" layoutX="829.0" layoutY="178.0" prefHeight="367.0" prefWidth="388.0" />
+                        <PieChart fx:id="pcUsuarios" layoutX="681.0" layoutY="435.0" prefHeight="269.0" prefWidth="302.0" />
+                        <Text fx:id="txtInforme1" layoutX="14.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INFORME DE BIBLIOTECARIO:" wrappingWidth="1173.13671875">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                </content>

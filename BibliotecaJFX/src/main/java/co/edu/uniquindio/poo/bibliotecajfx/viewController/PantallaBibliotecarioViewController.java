@@ -4,20 +4,33 @@ import co.edu.uniquindio.poo.bibliotecajfx.App;
 import co.edu.uniquindio.poo.bibliotecajfx.Controller.BibliotecarioController;
 import co.edu.uniquindio.poo.bibliotecajfx.Controller.UsuarioController;
 import co.edu.uniquindio.poo.bibliotecajfx.Model.*;
+import javafx.animation.PauseTransition;
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.PieChart;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import javax.swing.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.error;
 
@@ -153,7 +166,20 @@ public class PantallaBibliotecarioViewController {
     TextField tfTiempoReserva;
 
     @FXML
-    PieChart pcGraficaLibros;
+    BarChart bcLibros;
+    @FXML
+    CategoryAxis bccTipoLibro;
+    @FXML
+    NumberAxis bcnLibro;
+
+    @FXML
+    PieChart pcLibros;
+    @FXML
+    PieChart pcUsuarios;
+    @FXML
+    PieChart pcReservas;
+    @FXML
+    Text txtInforme;
 
 
     public void setApp(App app) {
@@ -302,7 +328,7 @@ public class PantallaBibliotecarioViewController {
 
             app.getListReservas().remove(reservaSeleccionada);
 
-
+            listReservas.remove(reservaSeleccionada);
             tbReservas.getSelectionModel().clearSelection();
             limpiarReserva();
             tbReservas.refresh();
@@ -950,42 +976,87 @@ public class PantallaBibliotecarioViewController {
         tbLibrosDigitales.refresh();
     }
 
-    public void generarGraficaLibros(List<Libro> libros) {
-        PieChart pieChart = pcGraficaLibros;
-        ObservableList<Libro> librosFisicos = FXCollections.observableArrayList();
-        ObservableList<Libro> librosReferencias = FXCollections.observableArrayList();
-        ObservableList<Libro> librosDigitales = FXCollections.observableArrayList();
-        double fisicos = 0 ;
-        double referencias = 0;
-        double digitales  = 0;
+    public void cargarGraficas() {
 
-        for (Libro libroFisico : libros) {
-            if (libroFisico.getTipoLibro() == TipoLibro.FISICO) {
-                librosFisicos.add(libroFisico);
-            } else if (libroFisico.getTipoLibro() == TipoLibro.REFERENCIA) {
-                librosReferencias.add(libroFisico);
 
-            } else if (libroFisico.getTipoLibro() == TipoLibro.DIGITAL) {
-                librosDigitales.add(libroFisico);
-            }
+        pcLibros.setTitle("Tipo de Libro");
+        pcUsuarios.setTitle("Tipo de Usuario");
+        pcReservas.setTitle("Usuarios con o sin Reservas");
+
+        double fisicos = listLibrosFisicos.size() ,digitales = listLibrosDigitales.size(), referencias = listLibrosReferencias.size();
+
+
+        double estudiantes = 0, docentes = 0;
+        for (Usuario usuario : listUsuarios) {
+            if (usuario.getTipoUsuario() == TipoUsuario.ESTUDIANTE) estudiantes++;
+            else if (usuario.getTipoUsuario() == TipoUsuario.DOCENTE) docentes++;
         }
-        if (tbLibrosFisicos != null) {
-            fisicos = librosFisicos.size();
+
+        double usuariosConReservas = 0, usuariosSinReservas = 0;
+        for (Usuario usuario : listUsuarios) {
+            if (!usuario.getListReservasUsuario().isEmpty()) usuariosConReservas++;
+            else usuariosSinReservas++;
         }
-        if (tbLibrosReferencias != null) {
-            referencias = librosReferencias.size();
-        }
-        if (tbLibrosDigitales != null) {
-            digitales = librosDigitales.size();
-        }
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("Libros Fisicos", fisicos),
-                new PieChart.Data("Libros Referencias", referencias),
-                new PieChart.Data("Libros Digitales", digitales)
+
+        pcLibros.getData().addAll(
+                new PieChart.Data("Físicos", fisicos),
+                new PieChart.Data("Referencias", referencias),
+                new PieChart.Data("Digitales", digitales)
         );
-         pieChart.setData(pieChartData);
 
+        pcUsuarios.getData().addAll(
+                new PieChart.Data("Estudiantes", estudiantes),
+                new PieChart.Data("Docentes", docentes)
+        );
 
+        pcReservas.getData().addAll(
+                new PieChart.Data("Con Reserva", usuariosConReservas),
+                new PieChart.Data("Sin Reservas", usuariosSinReservas)
+        );
+        txtInforme.setText(
+                "Cantidad de Libros: " + listLibros.size() + "\n" +
+                "Fisicos: " + listLibrosFisicos.size() + "\n" +
+                "Referencias: " + listLibrosReferencias.size() + "\n" +
+                "Digitales: " + listLibrosDigitales.size() + "\n\n" +
+                "Cantidad de Usuarios: " + listUsuarios.size() + "\n" +
+                "Estudiantes: " + Math.round(estudiantes) + "\n" +
+                "Docentes: " + Math.round(docentes) + "\n\n" +
+                 "Usuarios con Reservas: "+ Math.round(usuariosConReservas)+"\n"+
+                 "Usuarios sin Reservas: "+ Math.round(usuariosSinReservas));
+    }
+
+    public void eliminarGraficas() {
+        if (pcLibros != null) {
+            pcLibros.getData().clear();
+            pcLibros.setTitle("");
+            pcLibros.setLegendVisible(false);
+            ocultarLabels(pcLibros);
+        }
+        if (pcUsuarios != null) {
+            pcUsuarios.getData().clear();
+            pcUsuarios.setTitle("");
+            pcUsuarios.setLegendVisible(false);
+            ocultarLabels(pcUsuarios);
+        }
+        if (pcReservas != null) {
+            pcReservas.getData().clear();
+            pcReservas.setTitle("");
+            pcReservas.setLegendVisible(false);
+            ocultarLabels(pcReservas);
+        }
+    }
+
+    private void ocultarLabels(PieChart pieChart) {
+        Platform.runLater(() -> {
+            Set<Node> labels = pieChart.lookupAll(".chart-pie-label");
+            for (Node label : labels) {
+                label.setVisible(false);
+                label.setManaged(false);
+                label.setMouseTransparent(true);
+            }
+            pieChart.requestLayout();
+            pieChart.layout();
+        });
     }
 
 

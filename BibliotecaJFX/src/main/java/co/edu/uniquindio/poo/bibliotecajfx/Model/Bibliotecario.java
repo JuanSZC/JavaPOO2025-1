@@ -93,10 +93,11 @@ public class Bibliotecario extends Empleado {
     }
 
     public String generarInforme() {
-        return "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+        return "INFORME DE DATOS DE LA BIBLIOTECA: \n" +
+                "Cantidad de Libros: " + this.getBiblioteca().getListLibros().size() + "\n" +
+                "Cantidad de Usuarios: " + this.getBiblioteca().getListUsuarios().size() + "\n" +
+                "Cantidad de Reservas: " + this.getBiblioteca().getListReservas().size() + "\n";
     }
+
 
 }

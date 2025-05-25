@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -17,7 +19,7 @@
    <children>
       <TabPane prefHeight="759.0" prefWidth="1262.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Gestion de Usuarios">
+            <Tab onSelectionChanged="#eliminarGrafica" text="Gestion de Usuarios">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -63,6 +65,40 @@
                         </MenuButton>
                         <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
                         <Button layoutX="1063.0" layoutY="550.0" mnemonicParsing="false" onAction="#limpiarEmpleado" text="Limpiar" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab onSelectionChanged="#cargarGraficas" text="Informe">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="164.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d74636" height="115.0" layoutY="1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#85110c" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informe">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="934.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRADOR">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
+                        <Accordion layoutX="983.0" layoutY="576.0" />
+                        <PieChart fx:id="pcEmpleados" layoutX="581.0" layoutY="176.0" prefHeight="539.0" prefWidth="592.0" />
+                        <Text fx:id="txtInforme" layoutX="14.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de Informe" wrappingWidth="1173.13671875">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="14.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INFORME DE ADMINISTRADOR:" wrappingWidth="1173.13671875">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                </content>
