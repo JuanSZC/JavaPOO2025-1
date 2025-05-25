@@ -2,6 +2,7 @@ package co.edu.uniquindio.poo.bibliotecajfx.viewController;
 
 import co.edu.uniquindio.poo.bibliotecajfx.App;
 import co.edu.uniquindio.poo.bibliotecajfx.Controller.BibliotecarioController;
+import co.edu.uniquindio.poo.bibliotecajfx.Controller.UsuarioController;
 import co.edu.uniquindio.poo.bibliotecajfx.Model.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -194,6 +195,7 @@ public class PantallaBibliotecarioViewController {
                 lista.add(estudiante);
                 app.setListUsuarios(lista);
                 listUsuarios.add(estudiante);
+                app.getBiblioteca().getListUsuarios().add(estudiante);
                 mostrarMensaje("Estudiante registrado con exito.");
             }
         }
@@ -235,7 +237,7 @@ public class PantallaBibliotecarioViewController {
             return;
         }
 
-        Libro libroEncontrado = listLibros.stream()
+        Libro libroEncontrado = app.getListLibros().stream()
                 .filter(l -> l.getTitulo().equalsIgnoreCase(tituloLibro))
                 .findFirst()
                 .orElse(null);
@@ -272,9 +274,7 @@ public class PantallaBibliotecarioViewController {
             libroEncontrado.setEstaDisponible(false);
             tbReservas.refresh();
 
-            ObservableList<Reserva> lista = FXCollections.observableArrayList(app.getListReservas());
-            lista.add(reserva);
-            app.setListReservas(lista);
+
 
             usuarioEncontrado.getListReservasUsuario().add(reserva);
 
@@ -285,21 +285,27 @@ public class PantallaBibliotecarioViewController {
         }
     }
 
-
     public void eliminarReserva() {
-
-        listReservas = FXCollections.observableList(listReservas);
         Reserva reservaSeleccionada = tbReservas.getSelectionModel().getSelectedItem();
+
         if (reservaSeleccionada != null) {
             reservaSeleccionada.getLibro().setEstaDisponible(true);
-            ObservableList<Reserva> lista = FXCollections.observableArrayList(app.getListReservas());
-            lista.remove(reservaSeleccionada);
-            app.setListReservas(lista);
-            reservaSeleccionada.getUsuario().getListReservasUsuario().remove(reservaSeleccionada);
-            listReservas.remove(reservaSeleccionada);
+
+           Usuario useR = reservaSeleccionada.getUsuario();
+           for (Usuario u : app.getBiblioteca().getListUsuarios()) {
+               if (u.equals(useR)){
+                   u.getListReservasUsuario().remove(reservaSeleccionada);
+
+               }
+           }
+
+
+            app.getListReservas().remove(reservaSeleccionada);
+
+
             tbReservas.getSelectionModel().clearSelection();
             limpiarReserva();
-            refrehLibros();
+            tbReservas.refresh();
 
             mostrarMensaje("Reserva eliminada con éxito.");
         } else {
@@ -329,6 +335,7 @@ public class PantallaBibliotecarioViewController {
                 lista.add(docente);
                 app.setListUsuarios(lista);
                 listUsuarios.add(docente);
+                app.getBiblioteca().getListUsuarios().add(docente);
                 mostrarMensaje("Docente Creado con Éxito.");
             }
         }
@@ -366,6 +373,7 @@ public class PantallaBibliotecarioViewController {
         lista.add(libroDigital);
         app.setListLibros(lista);
         listLibrosDigitales.add(libroDigital);
+        app.getBiblioteca().getListLibros().add(libroDigital);
         mostrarMensaje("Libro creado con Éxito.");
 
     }
@@ -398,6 +406,7 @@ public class PantallaBibliotecarioViewController {
         lista.add(libroFisico);
         app.setListLibros(lista);
         listLibrosFisicos.add(libroFisico);
+        app.getBiblioteca().getListLibros().add(libroFisico);
         mostrarMensaje("Libro creado con Éxito.");
 
     }
@@ -429,6 +438,7 @@ public class PantallaBibliotecarioViewController {
         lista.add(libroReferencia);
         app.setListLibros(lista);
         listLibrosReferencias.add(libroReferencia);
+        app.getBiblioteca().getListLibros().add(libroReferencia);
 
         mostrarMensaje("Libro creado con Éxito.");
 

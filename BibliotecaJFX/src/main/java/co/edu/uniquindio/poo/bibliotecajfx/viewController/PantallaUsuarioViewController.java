@@ -124,20 +124,28 @@ public class PantallaUsuarioViewController {
             return;
         }
 
-        if (usuarioController != null) {
-            usuarioSesion.solicitarPrestamoLibro(libroSeleccionado, tiempo);
 
-            Reserva reserva = new Reserva(libroSeleccionado,usuarioSesion,tiempo, LocalDate.now());
 
-            app.getListReservas().add(reserva);
-            usuarioSesion.getListReservasUsuario().add(reserva);
-            listReservas.add(reserva);
-            libroSeleccionado.setEstaDisponible(false);
-            tbLibros.refresh();
-            tbReservas.refresh();
-            mostrarMensaje("El libro ha sido reservado con éxito.");
-            System.out.println(usuarioSesion.getMaxReservas()+"--"+usuarioSesion.getListReservasUsuario().size());
-        }
+            for (Usuario user : app.getListUsuarios()){
+                if (user.equals(usuarioSesion)) {
+
+                    Reserva reserva = new Reserva(libroSeleccionado,usuarioSesion,tiempo, LocalDate.now());
+                    user.getListReservasUsuario().add(reserva);
+
+
+                    app.getListReservas().add(reserva);
+                    listReservas.add(reserva);
+                    libroSeleccionado.setEstaDisponible(false);
+                    tbLibros.refresh();
+                    tbReservas.refresh();
+                    mostrarMensaje("El libro ha sido reservado con éxito.");
+                    System.out.println(usuarioSesion.getMaxReservas()+"--"+usuarioSesion.getListReservasUsuario().size());
+                }
+            }
+
+
+
+
     }
 
     public void eliminarReserva() {

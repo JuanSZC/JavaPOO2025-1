@@ -48,11 +48,12 @@ public class PantallaAdministradorViewController {
         Empleado empleadoSeleccionado = tbEmpleados.getSelectionModel().getSelectedItem();
 
         if (empleadoSeleccionado != null) {
-            if(!empleadoSeleccionado.getCedula().equals("1145724059") && !empleadoSeleccionado.getCedula().equals("123456789")) {
+            if(!empleadoSeleccionado.getCedula().equals("1145724059") && !empleadoSeleccionado.getCedula().equals("1145731491")) {
                 listEmpleados.remove(empleadoSeleccionado);
                 ObservableList<Empleado> lista = FXCollections.observableArrayList(app.getListEmpleados());
                 lista.remove(empleadoSeleccionado);
                 app.setListEmpleados(lista);
+                app.getBiblioteca().getListEmpleados().remove(empleadoSeleccionado);
                 tbEmpleados.getSelectionModel().clearSelection();
             }
             else {

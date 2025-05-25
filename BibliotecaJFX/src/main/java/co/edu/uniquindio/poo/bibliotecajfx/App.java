@@ -21,7 +21,7 @@ public class App extends Application {
     private Stage stage;
     private final Biblioteca biblioteca = new Biblioteca("Universidad del Quindio",1234,"Cra 15 #12N, Armenia, Quindío");
     private final Administrador administradorPrincipal = new Administrador("Juan Sebastian Zambrano", "1145724059", "contraseña", biblioteca);
-    private final Bibliotecario bibliotecarioPrincipal = new Bibliotecario("Miguel Giraldo","123456789","Contrasenia",biblioteca);
+    private final Bibliotecario bibliotecarioPrincipal = new Bibliotecario("Samuel Cuervo","1145731491","20141714",biblioteca);
     Usuario usuarioSesion;
     ObservableList<Usuario> listUsuarios;
     ObservableList<Libro> listLibros;
@@ -249,9 +249,6 @@ public class App extends Application {
         administradorPrincipal.agregarAdministrador(administradorPrincipal);
         administradorPrincipal.agregarBibliotecario(bibliotecarioPrincipal);
 
-
-        Bibliotecario bibliotecario1 = new Bibliotecario("Samuel Stiven Cuervo","1145731491","20141714",biblioteca);
-        administradorPrincipal.agregarBibliotecario(bibliotecario1);
         Administrador administrador1 = new Administrador("Jose Roca","987654","Perro123",biblioteca);
         administradorPrincipal.agregarAdministrador(administrador1);
 
