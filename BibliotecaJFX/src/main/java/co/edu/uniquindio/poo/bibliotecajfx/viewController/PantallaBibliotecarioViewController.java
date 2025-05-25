@@ -244,6 +244,9 @@ public class PantallaBibliotecarioViewController {
             mostrarError("No se puede reservar un libro de tipo Referencia.");
             return;
         }
+        if (usuarioEncontrado.getListReservasUsuario().size() >= usuarioEncontrado.getMaxReservas()){
+            mostrarError("El usuario ya supero el máximo de reservas.");
+        }
 
         try {
             if (dias > usuarioEncontrado.getMaxDias()){
@@ -857,6 +860,36 @@ public class PantallaBibliotecarioViewController {
         tfTiempoReserva.clear();
 
     }
+    public void limpiarLibroFisico() {
+        tbLibrosFisicos.getSelectionModel().clearSelection();
+
+        tfTituloFisico.clear();
+        tfAutorFisico.clear();
+        tfEditorialFisico.clear();
+        tfGeneroFisico.clear();
+        tfAnioFisico.clear();
+        chbDisponibleFisico.setSelected(false);
+    }
+    public void limpiarLibroDigital() {
+        tbLibrosDigitales.getSelectionModel().clearSelection();
+
+        tfTituloDigital.clear();
+        tfAutorDigital.clear();
+        tfGeneroDigital.clear();
+        tfAnioDigital.clear();
+        chbDisponibleDigital.setSelected(false);
+        cbFormato.getSelectionModel().clearSelection();
+    }
+    public void limpiarLibroReferencia() {
+        tbLibrosReferencias.getSelectionModel().clearSelection();
+
+        tfTituloReferencia.clear();
+        tfAutorReferencia.clear();
+        tfEditorialReferencia.clear();
+        tfGeneroReferencia.clear();
+        tfAnioReferencia.clear();
+    }
+
 
 
     public void cerrarSesion() {

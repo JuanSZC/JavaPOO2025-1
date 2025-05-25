@@ -341,15 +341,15 @@ public class App extends Application {
         LibroReferencia ref3 = new LibroReferencia("Diccionario de Lengua Española", "RAE", "Espasa", "Lengua", 2020);
         bibliotecarioPrincipal.registrarLibroReferencia(ref3);
 
-        Reserva reseva1 = new Reserva(libro3,estudiante1,10, LocalDate.of(2025,5,24));
+        Reserva reseva1 = new Reserva(libro3,estudiante1,5, LocalDate.of(2025,5,24));
         biblioteca.getListReservas().add(reseva1);
 
         estudiante1.getListReservasUsuario().add(reseva1);
-        Reserva reseva2= new Reserva(libro5,estudiante2,9, LocalDate.of(2025,5,23));
+        Reserva reseva2= new Reserva(libro5,estudiante2,2, LocalDate.of(2025,5,23));
         biblioteca.getListReservas().add(reseva2);
 
         estudiante2.getListReservasUsuario().add(reseva2);
-        Reserva reseva3 = new Reserva(libro6,docente1,6, LocalDate.of(2025,5,22));
+        Reserva reseva3 = new Reserva(libro6,docente1,3, LocalDate.of(2025,5,22));
         biblioteca.getListReservas().add(reseva3);
         docente1.getListReservasUsuario().add(reseva3);
 

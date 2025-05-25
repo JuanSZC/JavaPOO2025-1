@@ -119,8 +119,8 @@ public class PantallaUsuarioViewController {
         if (usuarioSesion.getListReservasUsuario().size() >= usuarioSesion.getMaxReservas()){
             mostrarError("Se ha superado el limite de Reservas de el usuario del tipo "+usuarioSesion.getTipoUsuario().toString()+".");
         }
-        if (tiempo > usuarioSesion.getMaxReservas()) {
-            mostrarError("El Usuario de tipo "+usuarioSesion.getTipoUsuario()+" Solo puede reservar por un máximo de "+usuarioSesion.getMaxReservas()+" dias.");
+        if (tiempo > usuarioSesion.getMaxDias()) {
+            mostrarError("El Usuario de tipo "+usuarioSesion.getTipoUsuario()+" Solo puede reservar por un máximo de "+usuarioSesion.getMaxDias()+" dias.");
             return;
         }
 
