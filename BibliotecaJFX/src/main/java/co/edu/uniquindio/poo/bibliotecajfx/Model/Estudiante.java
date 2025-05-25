@@ -5,7 +5,7 @@ public class Estudiante extends Usuario{
     private static final int MAXLIBROS = 10;
 
     public Estudiante(String nombreCompleto, String cedula, String correo, String contrasenia) {
-        super(nombreCompleto, cedula, correo, contrasenia, TipoUsuario.ESTUDIANTE);
+        super(nombreCompleto, cedula, correo, contrasenia, TipoUsuario.ESTUDIANTE,MAXDIAS);
     }
 
 }

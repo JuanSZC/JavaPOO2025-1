@@ -5,6 +5,6 @@ public class Docente extends Usuario{
     private static final int MAXLIBROS = 30;
 
     public Docente(String nombreCompleto, String cedula, String correo, String contrasenia) {
-        super(nombreCompleto, cedula, correo, contrasenia, TipoUsuario.DOCENTE);
+        super(nombreCompleto, cedula, correo, contrasenia, TipoUsuario.DOCENTE,MAXDIAS);
     }
 }

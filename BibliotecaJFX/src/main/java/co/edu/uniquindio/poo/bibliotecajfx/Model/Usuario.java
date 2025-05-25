@@ -10,15 +10,18 @@ public class Usuario {
     private String correo;
     private String contrasenia;
     private TipoUsuario tipoUsuario;
+    int MaxDias;
+
     private List<Reserva> listReservasUsuario;
 
-    public Usuario(String nombreCompleto, String cedula, String correo, String contrasenia, TipoUsuario tipoUsuario) {
+    public Usuario(String nombreCompleto, String cedula, String correo, String contrasenia, TipoUsuario tipoUsuario,int MaxDias) {
         this.nombreCompleto = nombreCompleto;
         this.cedula = cedula;
         this.correo = correo;
         this.contrasenia = contrasenia;
         this.tipoUsuario = tipoUsuario;
         this.listReservasUsuario = new ArrayList<>();
+        this.MaxDias = MaxDias;
     }
 
 public void solicitarPrestamoLibro(Libro libro, int dias){
@@ -55,6 +58,14 @@ public void solicitarPrestamoLibro(Libro libro, int dias){
         return contrasenia;
     }
 
+    public int getMaxDias() {
+        return MaxDias;
+    }
+
+    public void setMaxDias(int maxDias) {
+        MaxDias = maxDias;
+    }
+
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
@@ -83,6 +94,7 @@ public void solicitarPrestamoLibro(Libro libro, int dias){
                 ", correo='" + correo + '\'' +
                 ", contrasenia='" + contrasenia + '\'' +
                 ", tipoUsuario=" + tipoUsuario +
+                ", MaxDias=" + MaxDias +
                 ", listReservasUsuario=" + listReservasUsuario +
                 '}';
     }

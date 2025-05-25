@@ -31,7 +31,9 @@ public class PantallaCredencialesUsuarioViewController {
         String contrasenia = pfContrasenia.getText();
 
         if (administradorController.validadCredencialesUsuario(cedula, contrasenia)) {
+            app.setUsuarioSesion(administradorController.obtenerUsuario(cedula));
             openPantallaUsuario(administradorController.obtenerUsuario(cedula));
+            System.out.println("Usuario"+administradorController.obtenerUsuario(cedula)+ " se iniciado");
         }
         return null;
     }

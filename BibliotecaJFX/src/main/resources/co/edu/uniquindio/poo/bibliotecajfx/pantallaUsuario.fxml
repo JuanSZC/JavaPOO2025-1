@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -9,23 +12,80 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.poo.bibliotecajfx.viewController.PantallaUsuarioViewController">
    <children>
-      <TabPane prefHeight="645.0" prefWidth="1055.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="759.0" prefWidth="1262.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="Libros">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="162.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1feeff" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1055.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1380a8" height="115.0" layoutX="545.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
-                        <Text fill="WHITE" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libros">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="164.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5e77f2" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#001f75" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Libros">
                            <font>
                               <Font name="System Bold" size="37.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="876.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USUARIO">
+                        <Text fill="WHITE" layoutX="1078.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USUARIO">
                            <font>
                               <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <TableView fx:id="tbLibros" layoutY="162.0" prefHeight="571.0" prefWidth="1076.0">
+                           <columns>
+                              <TableColumn fx:id="tbcTitulo" prefWidth="180.0" text="Titulo" />
+                              <TableColumn fx:id="tbcAutor" prefWidth="164.0" text="Autor" />
+                              <TableColumn fx:id="tbcEditorial" prefWidth="181.0" text="Editorial" />
+                              <TableColumn fx:id="tbcGenero" minWidth="0.0" prefWidth="175.0" text="Género" />
+                              <TableColumn fx:id="tbcTipoLibro" prefWidth="147.0" text="Tipo de Libro" />
+                              <TableColumn fx:id="tbcAnio" prefWidth="97.0" text="Año" />
+                              <TableColumn fx:id="tbcDisponible" prefWidth="97.0" text="Disponiblilidad" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="1129.0" layoutY="265.0" mnemonicParsing="false" text="Crear Reserva" />
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" text="Cerrar Sesion" />
+                        <Button layoutX="1145.0" layoutY="448.0" mnemonicParsing="false" text="Limpiar" />
+                        <Text fill="WHITE" layoutX="772.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TipoEstudiante" textAlignment="RIGHT" wrappingWidth="469.64404296875">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Reservas">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c5dfe1" height="164.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5e77f2" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1262.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#001f75" height="115.0" stroke="TRANSPARENT" strokeType="INSIDE" width="510.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservas">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="1078.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USUARIO">
+                           <font>
+                              <Font name="System Bold" size="37.0" />
+                           </font>
+                        </Text>
+                        <TableView fx:id="tbReservas" layoutY="162.0" prefHeight="571.0" prefWidth="1076.0">
+                           <columns>
+                              <TableColumn fx:id="tbcLibroReserva" prefWidth="310.0" text="Libro" />
+                              <TableColumn fx:id="tbcTipoLibroReserva" prefWidth="268.0" text="Tipo de Libro" />
+                              <TableColumn fx:id="tbcFechaReserva" prefWidth="166.0" text="Fecha de Reserva" />
+                              <TableColumn fx:id="tbcTiempoReserva" minWidth="0.0" prefWidth="172.0" text="Tiempo" />
+                              <TableColumn fx:id="tbcFinFecha" prefWidth="159.0" text="Fecha finalización" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="1122.0" layoutY="267.0" mnemonicParsing="false" text="Eliminar Reserva" />
+                        <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" text="Cerrar Sesion" />
+                        <Button layoutX="1145.0" layoutY="448.0" mnemonicParsing="false" text="Limpiar" />
+                        <Text fill="WHITE" layoutX="772.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TipoEstudiante" textAlignment="RIGHT" wrappingWidth="469.64404296875">
+                           <font>
+                              <Font size="27.0" />
                            </font>
                         </Text>
                      </children>

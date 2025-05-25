@@ -21,6 +21,7 @@ public class App extends Application {
     private final Biblioteca biblioteca = new Biblioteca("Universidad del Quindio",1234,"Cra 15 #12N, Armenia, Quindío");
     private final Administrador administradorPrincipal = new Administrador("Juan Sebastian Zambrano", "1145724059", "contraseña", biblioteca);
     private final Bibliotecario bibliotecarioPrincipal = new Bibliotecario("Miguel Giraldo","123456789","Contrasenia",biblioteca);
+    Usuario usuarioSesion;
     ObservableList<Usuario> listUsuarios;
     ObservableList<Libro> listLibros;
     ObservableList<Empleado> listEmpleados;
@@ -33,8 +34,14 @@ public class App extends Application {
         inicializarData();
         this.stage = primaryStage;
         primaryStage.setTitle("BibliotecaUQ");
-        openPantallaBibliotecario();
+        openPantallaBienvenida();
 
+    }
+    public void setUsuarioSesion(Usuario usuarioSesion) {
+        this.usuarioSesion = usuarioSesion;
+    }
+    public Usuario getUsuarioSesion() {
+        return usuarioSesion;
     }
 
     public void openPantallaBienvenida() {
@@ -146,6 +153,7 @@ public class App extends Application {
             controlador.setListLibrosDigitales(this.listLibros);
             controlador.setListLibrosReferencia(this.listLibros);
             controlador.setListReservas(this.listReservas);
+
             controlador.setBibliotecarioController(bibliotecarioControlador);
 
 
@@ -165,6 +173,7 @@ public class App extends Application {
 
             PantallaUsuarioViewController controlador = loader.getController();
             controlador.setApp(this);
+            controlador.setListLibros(this.listLibros);
 
             Scene scene = new Scene(rootLayout);
             stage.setScene(scene);
@@ -203,7 +212,6 @@ public class App extends Application {
 
 
 
-
     public void inicializarData() {
         administradorPrincipal.agregarAdministrador(administradorPrincipal);
         administradorPrincipal.agregarBibliotecario(bibliotecarioPrincipal);
@@ -231,22 +239,22 @@ public class App extends Application {
         Docente docente5 = new Docente("Andrés Villa", "101005", "andres@universidad.com", "villaabc");
         bibliotecarioPrincipal.registrarDocente(docente5);
 
-        LibroFisico libro1 = new LibroFisico("Cien años de soledad", "Gabriel García Márquez", "Sudamericana", "Realismo mágico", 1967);
+        LibroFisico libro1 = new LibroFisico("Cien años de soledad", "Gabriel García Márquez", "Sudamericana", "Realismo mágico", 1967,true);
         bibliotecarioPrincipal.registrarLibroFisico(libro1);
-        LibroFisico libro2 = new LibroFisico("Don Quijote de la Mancha", "Miguel de Cervantes", "Francisco de Robles", "Novela", 1605);
+        LibroFisico libro2 = new LibroFisico("Don Quijote de la Mancha", "Miguel de Cervantes", "Francisco de Robles", "Novela", 1605,false);
         bibliotecarioPrincipal.registrarLibroFisico(libro2);
-        LibroFisico libro3 = new LibroFisico("1984", "George Orwell", "Secker & Warburg", "Distopía", 1949);
+        LibroFisico libro3 = new LibroFisico("1984", "George Orwell", "Secker & Warburg", "Distopía", 1949,true);
         bibliotecarioPrincipal.registrarLibroFisico(libro3);
-        LibroFisico libro4 = new LibroFisico("El Principito", "Antoine de Saint-Exupéry", "Reynal & Hitchcock", "Fábula", 1943);
+        LibroFisico libro4 = new LibroFisico("El Principito", "Antoine de Saint-Exupéry", "Reynal & Hitchcock", "Fábula", 1943,true);
         bibliotecarioPrincipal.registrarLibroFisico(libro4);
-        LibroFisico libro5 = new LibroFisico("La Sombra del Viento", "Carlos Ruiz Zafón", "Planeta", "Misterio", 2001);
+        LibroFisico libro5 = new LibroFisico("La Sombra del Viento", "Carlos Ruiz Zafón", "Planeta", "Misterio", 2001,false);
         bibliotecarioPrincipal.registrarLibroFisico(libro5);
 
-        LibroDigital libroD1 = new LibroDigital("Aprendiendo Java", "Ana Torres", "TechBooks", "Educativo", 2020, FormatoDigital.PDF, "https://descargas.com/Java2020.pdf");
+        LibroDigital libroD1 = new LibroDigital("Aprendiendo Java", "Ana Torres", "TechBooks", "Educativo", 2020, FormatoDigital.PDF, "https://descargas.com/Java2020.pdf",true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD1);
-        LibroDigital libroD2 = new LibroDigital("Historia Universal", "Carlos Medina", "HistoriaEd", "Historia", 2018, FormatoDigital.EPUB, "https://descargas.com/Historia2018.epub");
+        LibroDigital libroD2 = new LibroDigital("Historia Universal", "Carlos Medina", "HistoriaEd", "Historia", 2018, FormatoDigital.EPUB, "https://descargas.com/Historia2018.epub",false);
         bibliotecarioPrincipal.registrarLibroDigital(libroD2);
-        LibroDigital libroD3 = new LibroDigital("Cuentos para dormir", "Lucía Martínez", "Fábulas SA", "Infantil", 2022, FormatoDigital.MOBI, "https://descargas.com/Cuentos2022.mobi");
+        LibroDigital libroD3 = new LibroDigital("Cuentos para dormir", "Lucía Martínez", "Fábulas SA", "Infantil", 2022, FormatoDigital.MOBI, "https://descargas.com/Cuentos2022.mobi",true);
         bibliotecarioPrincipal.registrarLibroDigital(libroD3);
 
         LibroReferencia ref1 = new LibroReferencia("Enciclopedia de Ciencias", "Marcos Díaz", "CienciaPlus", "Ciencia", 2015);

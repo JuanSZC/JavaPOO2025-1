@@ -4,8 +4,8 @@ public class LibroDigital extends Libro{
     private FormatoDigital formatoDigital;
     private String enlaceDescarga;
 
-    public LibroDigital(String titulo, String autor, String editorial, String genero, int anio, FormatoDigital formatoDigital, String enlaceDescarga) {
-        super(titulo, autor, editorial, genero, anio,true,TipoLibro.DIGITAL);
+    public LibroDigital(String titulo, String autor, String editorial, String genero, int anio, FormatoDigital formatoDigital, String enlaceDescarga,boolean disponible) {
+        super(titulo, autor, editorial, genero, anio,disponible,TipoLibro.DIGITAL);
         this.formatoDigital = formatoDigital;
         this.enlaceDescarga = enlaceDescarga;
     }

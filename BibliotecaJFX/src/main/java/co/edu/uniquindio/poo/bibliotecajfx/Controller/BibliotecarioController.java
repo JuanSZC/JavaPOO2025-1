@@ -12,17 +12,14 @@ public class BibliotecarioController {
         this.bibliotecario = bibliotecario;
     }
 
-    public void registrarLibroFisico(String titulo, String autor, String editorial, String genero, int anio, boolean estaDisponible) {
-        LibroFisico nuevoLibro = new LibroFisico(titulo, autor,editorial,genero,anio);
-        bibliotecario.registrarLibroFisico(nuevoLibro);
+    public void registrarLibroFisico(LibroFisico libro) {
+        bibliotecario.registrarLibroFisico(libro);
     }
-    public void registrarLibroDigital(String titulo, String autor, String editorial, String genero, int anio,boolean estaDisponible, FormatoDigital formatoDigital, String enlaceDescarga){
-        LibroDigital nuevoLibro = new LibroDigital(titulo, autor, editorial, genero, anio, formatoDigital, enlaceDescarga);
-        bibliotecario.registrarLibroDigital(nuevoLibro);
+    public void registrarLibroDigital(LibroDigital libro) {
+        bibliotecario.registrarLibroDigital(libro);
     }
-    public void registrarLibroReferencia(String titulo, String autor, String editorial, String genero, int anio){
-        LibroReferencia libroNuevo = new LibroReferencia(titulo, autor,editorial,genero,anio);
-        bibliotecario.registrarLibroReferencia(libroNuevo);
+    public void registrarLibroReferencia(LibroReferencia libro) {
+        bibliotecario.registrarLibroReferencia(libro);
     }
 
     public void registrarEstudiante(Estudiante estudiante) {
