@@ -273,6 +273,8 @@ public class PantallaAdministradorViewController {
                 new PieChart.Data("Administradores", administradores),
                 new PieChart.Data("Bibliotecarios", bibliotecarios)
         );
+        pcEmpleados.setLegendVisible(true);
+        pcEmpleados.setLabelsVisible(true);
 
         txtInforme.setText(
                 "Cantidad de Empleados: " + listEmpleados.size()+"\n"+
@@ -288,8 +290,22 @@ public class PantallaAdministradorViewController {
             pcEmpleados.getData().clear();
             pcEmpleados.setLegendVisible(false);
             pcEmpleados.setLabelsVisible(false);
+            ocultarLabels( pcEmpleados );
         }
     }
+    private void ocultarLabels(PieChart pieChart) {
+        Platform.runLater(() -> {
+            Set<Node> labels = pieChart.lookupAll(".chart-pie-label");
+            for (Node label : labels) {
+                label.setVisible(false);
+                label.setManaged(false);
+                label.setMouseTransparent(true);
+            }
+            pieChart.requestLayout();
+            pieChart.layout();
+        });
+    }
+
 
     /**
      * Inicializa la tabla configurando las columnas para mostrar

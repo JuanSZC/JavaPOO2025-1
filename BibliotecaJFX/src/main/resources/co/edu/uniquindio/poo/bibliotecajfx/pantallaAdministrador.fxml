@@ -88,7 +88,7 @@
                         </Text>
                         <Button layoutX="1173.0" layoutY="704.0" mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesion" />
                         <Accordion layoutX="983.0" layoutY="576.0" />
-                        <PieChart fx:id="pcEmpleados" layoutX="581.0" layoutY="176.0" prefHeight="539.0" prefWidth="592.0" />
+                        <PieChart fx:id="pcEmpleados" layoutX="631.0" layoutY="197.0" prefHeight="439.0" prefWidth="495.0" />
                         <Text fx:id="txtInforme" layoutX="14.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texto de Informe" wrappingWidth="1173.13671875">
                            <font>
                               <Font size="20.0" />
