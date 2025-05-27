@@ -122,6 +122,7 @@ public class PantallaAdministradorViewController {
                 ObservableList<Empleado> lista = FXCollections.observableArrayList(app.getListEmpleados());
                 lista.add(bibliotecario);
                 app.setListEmpleados(lista);
+                app.getBiblioteca().getListEmpleados().add(bibliotecario);
                 listEmpleados.add(bibliotecario);
                 mostrarMensaje("Bibliotecario creado con éxito.");
             }
@@ -151,6 +152,7 @@ public class PantallaAdministradorViewController {
                 lista.add(administrador);
                 app.setListEmpleados(lista);
                 listEmpleados.add(administrador);
+                app.getBiblioteca().getListEmpleados().add(administrador);
                 mostrarMensaje("Administrador creado con éxito.");
             }
         }
