@@ -97,12 +97,12 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Text layoutX="939.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo: " />
+                                          <Text layoutX="944.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo: " />
                                           <TextField fx:id="tfAutorDigital" layoutX="993.0" layoutY="103.0" prefHeight="25.0" prefWidth="255.0" />
                                           <TextField fx:id="tfGeneroDigital" layoutX="995.0" layoutY="138.0" prefHeight="25.0" prefWidth="253.0" />
                                           <TextField fx:id="tfTituloDigital" layoutX="995.0" layoutY="59.0" prefHeight="25.0" prefWidth="251.0" />
                                           <TextField fx:id="tfAnioDigital" layoutX="995.0" layoutY="176.0" prefHeight="25.0" prefWidth="253.0" />
-                                          <Text layoutX="941.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
+                                          <Text layoutX="942.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
                                           <Text layoutX="943.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genero:" />
                                           <Text layoutX="945.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:" />
                                           <Text layoutX="1053.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información:">
@@ -134,16 +134,16 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Text layoutX="939.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo: " />
+                                          <Text layoutX="945.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo: " />
                                           <TextField fx:id="tfAutorReferencia" layoutX="993.0" layoutY="103.0" prefHeight="25.0" prefWidth="255.0" />
                                           <TextField fx:id="tfEditorialReferencia" layoutX="995.0" layoutY="138.0" prefHeight="25.0" prefWidth="253.0" />
                                           <TextField fx:id="tfTituloReferencia" layoutX="996.0" layoutY="59.0" prefHeight="25.0" prefWidth="251.0" />
                                           <TextField fx:id="tfGeneroReferencia" layoutX="995.0" layoutY="176.0" prefHeight="25.0" prefWidth="253.0" />
                                           <TextField fx:id="tfAnioReferencia" layoutX="995.0" layoutY="212.0" prefHeight="25.0" prefWidth="253.0" />
-                                          <Text layoutX="941.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
-                                          <Text layoutX="943.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editorial:" />
+                                          <Text layoutX="943.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
+                                          <Text layoutX="944.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editorial:" />
                                           <Text layoutX="945.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genero:" />
-                                          <Text layoutX="944.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:" />
+                                          <Text layoutX="947.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:" />
                                           <Text layoutX="1053.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información:">
                                              <font>
                                                 <Font size="25.0" />
@@ -170,16 +170,16 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Text layoutX="939.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo: " />
+                                          <Text layoutX="947.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titulo: " />
                                           <TextField fx:id="tfAutorFisico" layoutX="993.0" layoutY="103.0" prefHeight="25.0" prefWidth="255.0" />
                                           <TextField fx:id="tfEditorialFisico" layoutX="995.0" layoutY="138.0" prefHeight="25.0" prefWidth="253.0" />
                                           <TextField fx:id="tfTituloFisico" layoutX="996.0" layoutY="59.0" prefHeight="25.0" prefWidth="251.0" />
                                           <TextField fx:id="tfGeneroFisico" layoutX="995.0" layoutY="176.0" prefHeight="25.0" prefWidth="253.0" />
                                           <TextField fx:id="tfAnioFisico" layoutX="995.0" layoutY="212.0" prefHeight="25.0" prefWidth="253.0" />
-                                          <Text layoutX="941.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
-                                          <Text layoutX="943.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editorial:" />
+                                          <Text layoutX="946.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:" />
+                                          <Text layoutX="945.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editorial:" />
                                           <Text layoutX="945.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genero:" />
-                                          <Text layoutX="944.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:" />
+                                          <Text layoutX="948.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:" />
                                           <Text layoutX="1053.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Información:">
                                              <font>
                                                 <Font size="25.0" />
