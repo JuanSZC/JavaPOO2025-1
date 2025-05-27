@@ -24,8 +24,8 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField fx:id="tfCedula" layoutX="193.0" layoutY="199.0" prefHeight="25.0" prefWidth="232.0" />
-            <PasswordField fx:id="pfContrasenia" layoutX="193.0" layoutY="283.0" prefHeight="25.0" prefWidth="232.0" />
+            <TextField fx:id="tfCedula" layoutX="193.0" layoutY="199.0" prefHeight="25.0" prefWidth="232.0" promptText="Ingrese la Cedula del Empleado" />
+            <PasswordField fx:id="pfContrasenia" layoutX="193.0" layoutY="283.0" prefHeight="25.0" prefWidth="232.0" promptText="Ingrese la Contraseña del Empleado" />
             <Text layoutX="100.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cedula:" textAlignment="CENTER" wrappingWidth="419.0">
                <font>
                   <Font size="20.0" />
