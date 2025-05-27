@@ -319,6 +319,14 @@ public class PantallaAdministradorViewController {
             tbcContrasenia.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getContrasenia()));
             tbcTipoTrabajo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTipoTrabajo().name()));
             tbEmpleados.setItems(listEmpleados);
+
+
+           tbEmpleados.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+               if (newSelection != null) {
+                   obtenerInformacionEmpleado();
+               }
+           });
+
         };
     }
 }
